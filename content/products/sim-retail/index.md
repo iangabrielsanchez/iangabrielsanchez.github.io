@@ -35,7 +35,7 @@ Raw ingredient inventory and a cafe menu module are planned but not yet built â€
 
 ## Tech Stack
 
-- NestJS backend, raw SQL over `pg`, `class-validator`/`class-transformer` DTOs
+- NestJS backend with parameterized queries over `pg`, `class-validator`/`class-transformer` DTOs
 - Angular 21 back-office admin app with dynamic white-label theming
 - Angular POS terminal renderer, offline-first with a local SQLite mirror synced over Electron IPC
 - Electron desktop shell, plus a Docker/nginx static deployment option for the back-office

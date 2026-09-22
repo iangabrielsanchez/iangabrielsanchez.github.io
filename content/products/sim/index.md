@@ -31,11 +31,11 @@ Most gym software is either a subscription SaaS priced for a multi-location chai
 
 SIM runs as an Electron desktop app talking to a local NestJS backend and PostgreSQL database — no cloud dependency for day-to-day operation. Auto-migration on startup keeps the schema current without manual DB work, and an auto-updater (with a separate release channel for the POS terminal) keeps the gym's install current without me physically visiting.
 
-Hand-written SQL migrations instead of an ORM, and direct integration with an ACR122 NFC reader and USB thermal printer via ESC/POS — the kind of hardware-facing work that doesn't show up in a typical web app, and that surfaces its own class of bugs: printer memory corruption, timezone boundaries that only break at midnight, silent installer mismatches on auto-update.
+Hand-written SQL migrations for full control over the schema, and direct integration with an ACR122 NFC reader and USB thermal printer via ESC/POS — the kind of hardware-facing work that doesn't show up in a typical web app, and that surfaces its own class of bugs: printer memory corruption, timezone boundaries that only break at midnight, silent installer mismatches on auto-update.
 
 ## Tech Stack
 
-- NestJS backend, raw SQL over `pg` (no ORM)
+- NestJS backend with parameterized queries over `pg`
 - Angular 21 admin console + a separate Angular POS terminal renderer
 - Electron desktop shell (Mac/Windows/Linux), electron-builder, electron-updater
 - PostgreSQL

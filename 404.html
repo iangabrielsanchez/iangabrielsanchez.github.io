@@ -8,6 +8,60 @@
   <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16.png">
   <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
   <title>Page Not Found — Ian Gabriel Sanchez</title>
+  <script>
+    // GitHub Pages has no server-side rewrites, so clean URLs like
+    // /product/sim or /about fall through to this 404 page. Before
+    // anything renders, check if the path matches a known route —
+    // if so, fetch the real file and swap the whole document for it
+    // synchronously (via document.write), so the "not found" UI
+    // never paints at all. Only genuinely unknown paths fall through
+    // to the static 404 content below.
+    (function () {
+      var path = location.pathname.replace(/\/+$/, '') || '/';
+
+      var staticRoutes = {
+        '/about': '/about.html',
+        '/portfolio': '/portfolio.html',
+        '/lab': '/lab.html',
+        '/blog': '/blog.html',
+        '/products': '/products.html'
+      };
+
+      var dynamicRoutes = [
+        { prefix: '/portfolio/', file: '/portfolio-item.html' },
+        { prefix: '/post/', file: '/post.html' },
+        { prefix: '/product/', file: '/product.html' }
+      ];
+
+      var target = staticRoutes[path];
+
+      if (!target) {
+        for (var i = 0; i < dynamicRoutes.length; i++) {
+          var route = dynamicRoutes[i];
+          if (path.indexOf(route.prefix) === 0 && path.length > route.prefix.length) {
+            target = route.file;
+            break;
+          }
+        }
+      }
+
+      if (target) {
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', target, false); // synchronous — blocks parsing until done
+        try {
+          xhr.send(null);
+          if (xhr.status >= 200 && xhr.status < 300) {
+            history.replaceState(null, '', path + location.search);
+            document.open();
+            document.write(xhr.responseText);
+            document.close();
+          }
+        } catch (e) {
+          // fall through to the static 404 content below
+        }
+      }
+    })();
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
@@ -79,59 +133,5 @@
     <span class="text-[11px] text-white/40 tracking-[.04em]">© 2026 · Philippines</span>
   </footer>
 
-  <script>
-    // GitHub Pages has no server-side rewrites, so clean URLs like
-    // /product/sim or /about fall through to this 404 page. We map
-    // the path to the real static file, fetch its HTML, and swap it
-    // in while keeping the pretty URL in the address bar. If the
-    // path doesn't match a known route, the 404 content above stays.
-    (function () {
-      var path = location.pathname.replace(/\/+$/, '') || '/';
-
-      var staticRoutes = {
-        '/about': '/about.html',
-        '/portfolio': '/portfolio.html',
-        '/lab': '/lab.html',
-        '/blog': '/blog.html',
-        '/products': '/products.html'
-      };
-
-      var dynamicRoutes = [
-        { prefix: '/portfolio/', file: '/portfolio-item.html' },
-        { prefix: '/post/', file: '/post.html' },
-        { prefix: '/product/', file: '/product.html' }
-      ];
-
-      var target = staticRoutes[path];
-
-      if (!target) {
-        for (var i = 0; i < dynamicRoutes.length; i++) {
-          var route = dynamicRoutes[i];
-          if (path.indexOf(route.prefix) === 0 && path.length > route.prefix.length) {
-            target = route.file;
-            break;
-          }
-        }
-      }
-
-      if (!target) return;
-
-      fetch(target)
-        .then(function (r) {
-          if (!r.ok) throw new Error('not found');
-          return r.text();
-        })
-        .then(function (html) {
-          history.replaceState(null, '', path + location.search);
-          document.open();
-          document.write(html);
-          document.close();
-        })
-        .catch(function () {
-          // Route looked valid but the fetch failed — leave the
-          // static 404 content in place, it's already showing.
-        });
-    })();
-  </script>
 </body>
 </html>
