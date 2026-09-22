@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16.png">
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+  <title>Homelab — Ian Gabriel Sanchez</title>
+  <meta name="description" content="A self-hosted Proxmox cluster and Raspberry Pi homelab — infrastructure, services, and what runs where.">
+  <link rel="canonical" href="https://iangabrielsanchez.com/lab">
+
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://iangabrielsanchez.com/lab">
+  <meta property="og:title" content="Homelab — Ian Gabriel Sanchez">
+  <meta property="og:description" content="A self-hosted Proxmox cluster and Raspberry Pi homelab — infrastructure, services, and what runs where.">
+  <meta property="og:image" content="https://iangabrielsanchez.com/assets/og-image.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Homelab — Ian Gabriel Sanchez">
+  <meta name="twitter:description" content="A self-hosted Proxmox cluster and Raspberry Pi homelab — infrastructure, services, and what runs where.">
+  <meta name="twitter:image" content="https://iangabrielsanchez.com/assets/og-image.jpg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] },
+        extend: {
+          colors: { accent: '#ff4500' },
+          borderWidth: { '3': '3px' },
+          letterSpacing: { 'widest2': '0.14em' },
+          lineHeight: { 'tighter': '0.92' },
+        },
+      },
+    }
+  </script>
+</head>
+<body class="bg-white text-black font-sans min-h-screen flex flex-col">
+
+  <!-- ── NAV ── -->
+  <nav class="sticky top-0 z-50 bg-white border-b-3 border-black flex items-center justify-between px-10 h-[52px]">
+    <a href="/" class="text-[13px] font-black uppercase tracking-[.04em]">Ian Gabriel Sanchez</a>
+    <ul class="hidden md:flex gap-7">
+      <li><a href="/about.html"    class="text-[11px] text-gray-500 uppercase tracking-[.08em] hover:text-black transition-colors">About</a></li>
+      <li><a href="/products.html" class="text-[11px] text-gray-500 uppercase tracking-[.08em] hover:text-black transition-colors">Products</a></li>
+      <li><a href="/lab.html"      class="text-[11px] text-black font-bold uppercase tracking-[.08em] border-b-2 border-accent pb-0.5">Lab</a></li>
+      <li><a href="/blog.html"    class="text-[11px] text-gray-500 uppercase tracking-[.08em] hover:text-black transition-colors">Blog</a></li>
+      <li><a href="/portfolio.html"     class="text-[11px] text-gray-500 uppercase tracking-[.08em] hover:text-black transition-colors">Portfolio</a></li>
+    </ul>
+    <a href="mailto:contact@iangabrielsanchez.com" class="bg-accent text-white text-[11px] font-bold uppercase tracking-[.06em] px-4 py-2 shrink-0 whitespace-nowrap">
+      <span class="hidden sm:inline">Available for Contract →</span>
+      <span class="sm:hidden">Contact →</span>
+    </a>
+  </nav>
+
+  <main class="flex-1">
+
+  <!-- ── PAGE HEADER ── -->
+  <div class="border-b-3 border-black px-10 pt-14 pb-10">
+    <p class="text-[10px] font-bold text-accent uppercase tracking-widest2 mb-3">Personal Infrastructure</p>
+    <h1 class="text-[clamp(48px,6vw,72px)] font-black uppercase leading-none tracking-[-0.03em]">Homelab</h1>
+  </div>
+
+  <!-- ── STATS BAR ── -->
+  <div class="grid grid-cols-2 md:grid-cols-4 bg-black border-b-3 border-black">
+    <div class="border-r border-white/10 px-10 py-7">
+      <div class="text-[40px] font-black text-white leading-none tracking-tight">2</div>
+      <div class="text-[10px] text-white/70 uppercase tracking-[.12em] mt-1">Node Cluster</div>
+    </div>
+    <div class="border-r border-white/10 bg-accent px-10 py-7">
+      <div class="text-[40px] font-black text-white leading-none tracking-tight">12+</div>
+      <div class="text-[10px] text-white/70 uppercase tracking-[.12em] mt-1">Services Running</div>
+    </div>
+    <div class="border-r border-white/10 px-10 py-7">
+      <div class="text-[40px] font-black text-white leading-none tracking-tight">24/7</div>
+      <div class="text-[10px] text-white/70 uppercase tracking-[.12em] mt-1">Mac Mini + Pi Uptime</div>
+    </div>
+    <div class="px-10 py-7">
+      <div class="text-[40px] font-black text-white leading-none tracking-tight">VPN</div>
+      <div class="text-[10px] text-white/70 uppercase tracking-[.12em] mt-1">Tailscale Mesh</div>
+    </div>
+  </div>
+
+  <!-- ── PROXMOX CLUSTER ── -->
+  <section class="px-10 pt-16 pb-0 border-b-3 border-black">
+    <p class="text-[10px] font-bold text-accent uppercase tracking-widest2 mb-3">Primary Infrastructure</p>
+    <h2 class="text-[32px] font-black uppercase tracking-tight border-b-3 border-black pb-5 mb-0 inline-block">Proxmox Cluster</h2>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 border-t-3 border-black mt-10">
+
+      <div class="border-r-3 border-b-3 border-black p-10">
+        <p class="text-[9px] font-bold text-accent uppercase tracking-widest2 mb-3">On-Demand Node</p>
+        <h3 class="text-[17px] font-black uppercase mb-3">AMD Ryzen 5600</h3>
+        <p class="text-[13px] text-gray-500 leading-relaxed mb-4">Powered on when I need more compute than the 24/7 tier can offer — heavier VMs, extra staging environments, or a burst of build capacity. Also runs as a remote gaming server via Apollo/Artemis when it's up.</p>
+        <div class="flex flex-wrap gap-1.5">
+          <span class="text-[10px] text-gray-600 border border-gray-300 px-2.5 py-1 tracking-[.04em]">Proxmox VE</span>
+          <span class="text-[10px] text-gray-600 border border-gray-300 px-2.5 py-1 tracking-[.04em]">Apollo</span>
+          <span class="text-[10px] text-gray-600 border border-gray-300 px-2.5 py-1 tracking-[.04em]">Artemis</span>
+        </div>
+      </div>
+
+      <div class="border-r-3 border-b-3 border-black p-10">
+        <p class="text-[9px] font-bold text-accent uppercase tracking-widest2 mb-3">24/7 Nodes × 2</p>
+        <h3 class="text-[17px] font-black uppercase mb-3">Mac Mini 2012</h3>
+        <p class="text-[13px] text-gray-500 leading-relaxed mb-4">Two repurposed Mac Minis, always on. A dedicated high-availability remote development server, a GitHub Actions runner, Jellyfin, and ephemeral VMs for CTF setups and one-off testing.</p>
+        <div class="flex flex-wrap gap-1.5">
+          <span class="text-[10px] text-gray-600 border border-gray-300 px-2.5 py-1 tracking-[.04em]">Proxmox VE</span>
+          <span class="text-[10px] text-gray-600 border border-gray-300 px-2.5 py-1 tracking-[.04em]">GitHub Actions Runner (act)</span>
+          <span class="text-[10px] text-gray-600 border border-gray-300 px-2.5 py-1 tracking-[.04em]">Jellyfin</span>
+          <span class="text-[10px] text-gray-600 border border-gray-300 px-2.5 py-1 tracking-[.04em]">LXC Containers</span>
+        </div>
+      </div>
+
+      <div class="border-b-3 border-black p-10">
+        <p class="text-[9px] font-bold text-accent uppercase tracking-widest2 mb-3">Quorum Device</p>
+        <h3 class="text-[17px] font-black uppercase mb-3">Raspberry Pi</h3>
+        <p class="text-[13px] text-gray-500 leading-relaxed mb-4">Not a full cluster node — the Pi runs as a Proxmox QDevice, giving the cluster a tie-breaking vote so quorum survives even with an even node count. It also carries its own always-on service stack below.</p>
+        <div class="flex flex-wrap gap-1.5">
+          <span class="text-[10px] text-gray-600 border border-gray-300 px-2.5 py-1 tracking-[.04em]">Proxmox QDevice</span>
+          <span class="text-[10px] text-gray-600 border border-gray-300 px-2.5 py-1 tracking-[.04em]">Tailscale</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── RASPBERRY PI ── -->
+  <section class="px-10 pt-16 pb-0 border-b-3 border-black">
+    <p class="text-[10px] font-bold text-accent uppercase tracking-widest2 mb-3">Always-On Services</p>
+    <h2 class="text-[32px] font-black uppercase tracking-tight border-b-3 border-black pb-5 mb-0 inline-block">Raspberry Pi</h2>
+
+    <div class="grid grid-cols-2 md:grid-cols-4 border-t-3 border-black mt-10">
+
+      <div class="border-r-3 border-b-3 border-black p-8">
+        <p class="text-[9px] font-bold text-accent uppercase tracking-widest2 mb-3">Storage</p>
+        <h3 class="text-[15px] font-black uppercase mb-2">OpenMediaVault</h3>
+        <p class="text-[12px] text-gray-500 leading-relaxed">DIY NAS. Central storage for the homelab, backing Jellyfin and Transmission downloads on the Mac Minis.</p>
+      </div>
+
+      <div class="border-r-3 border-b-3 border-black p-8">
+        <p class="text-[9px] font-bold text-accent uppercase tracking-widest2 mb-3">Network</p>
+        <h3 class="text-[15px] font-black uppercase mb-2">Pi-hole</h3>
+        <p class="text-[12px] text-gray-500 leading-relaxed">Network-level ad and tracker blocking for every device on the home network. Doubles as a local DNS resolver.</p>
+      </div>
+
+      <div class="border-r-3 border-b-3 border-black p-8">
+        <p class="text-[9px] font-bold text-accent uppercase tracking-widest2 mb-3">Proxy</p>
+        <h3 class="text-[15px] font-black uppercase mb-2">Nginx Proxy Manager</h3>
+        <p class="text-[12px] text-gray-500 leading-relaxed">Reverse proxy with automatic SSL for all internal services. Clean subdomains without exposing port numbers.</p>
+      </div>
+
+      <div class="border-b-3 border-black p-8">
+        <p class="text-[9px] font-bold text-accent uppercase tracking-widest2 mb-3">Containers</p>
+        <h3 class="text-[15px] font-black uppercase mb-2">Portainer</h3>
+        <p class="text-[12px] text-gray-500 leading-relaxed">Container management UI for deploying and monitoring Docker services without full orchestration overhead.</p>
+      </div>
+
+      <div class="border-r-3 border-t-3 border-b-3 border-black p-8">
+        <p class="text-[9px] font-bold text-accent uppercase tracking-widest2 mb-3">Surveillance</p>
+        <h3 class="text-[15px] font-black uppercase mb-2">Frigate</h3>
+        <p class="text-[12px] text-gray-500 leading-relaxed">IP camera recording and motion detection. Local storage, no cloud subscription.</p>
+      </div>
+
+      <div class="border-r-3 border-t-3 border-b-3 border-black p-8">
+        <p class="text-[9px] font-bold text-accent uppercase tracking-widest2 mb-3">Downloads</p>
+        <h3 class="text-[15px] font-black uppercase mb-2">Transmission</h3>
+        <p class="text-[12px] text-gray-500 leading-relaxed">Torrent client with a web UI. Downloads land on the OpenMediaVault share, picked up by Jellyfin automatically.</p>
+      </div>
+
+      <div class="border-r-3 border-t-3 border-b-3 border-black p-8">
+        <p class="text-[9px] font-bold text-accent uppercase tracking-widest2 mb-3">Monitoring</p>
+        <h3 class="text-[15px] font-black uppercase mb-2">Jellystat</h3>
+        <p class="text-[12px] text-gray-500 leading-relaxed">Watch-history and usage stats for Jellyfin. Who's watching what, and how the media server is actually used.</p>
+      </div>
+
+      <div class="border-t-3 border-b-3 border-black p-8">
+        <p class="text-[9px] font-bold text-accent uppercase tracking-widest2 mb-3">Automation</p>
+        <h3 class="text-[15px] font-black uppercase mb-2">Home Assistant</h3>
+        <p class="text-[12px] text-gray-500 leading-relaxed">Home automation hub tying together smart devices around the house into one dashboard and rule engine.</p>
+      </div>
+
+    </div>
+
+    <a href="/blog.html" class="flex items-center justify-between border-t-3 border-black px-0 py-5 hover:bg-black hover:text-white transition-colors group">
+      <span class="text-[11px] font-bold uppercase tracking-[.1em]">Read my posts on running this setup</span>
+      <span class="text-[11px] font-bold group-hover:translate-x-1 transition-transform">→</span>
+    </a>
+  </section>
+
+  </main>
+
+  <!-- ── FOOTER ── -->
+  <footer class="bg-black border-t-3 border-black px-10 py-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+    <a href="/" class="text-[13px] font-black text-white uppercase tracking-[.04em]">Ian Gabriel Sanchez</a>
+    <div class="flex gap-6">
+      <a href="https://github.com/iangabrielsanchez" class="text-[11px] text-white/60 uppercase tracking-[.06em] hover:text-white transition-colors">GitHub</a>
+      <a href="https://linkedin.com/in/iangabrielsanchez" class="text-[11px] text-white/60 uppercase tracking-[.06em] hover:text-white transition-colors">LinkedIn</a>
+      <a href="mailto:contact@iangabrielsanchez.com" class="text-[11px] text-white/60 uppercase tracking-[.06em] hover:text-white transition-colors">Email</a>
+    </div>
+    <span class="text-[11px] text-white/40 tracking-[.04em]">© 2026 · Philippines</span>
+  </footer>
+
+</body>
+</html>

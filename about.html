@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16.png">
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+  <title>About — Ian Gabriel Sanchez</title>
+  <meta name="description" content="Background, certifications, and stack of Ian Gabriel Sanchez — a backend-focused software engineer specializing in distributed systems, cloud infrastructure, and application security.">
+  <link rel="canonical" href="https://iangabrielsanchez.com/about">
+
+  <meta property="og:type" content="profile">
+  <meta property="og:url" content="https://iangabrielsanchez.com/about">
+  <meta property="og:title" content="About — Ian Gabriel Sanchez">
+  <meta property="og:description" content="Background, certifications, and stack of Ian Gabriel Sanchez — a backend-focused software engineer specializing in distributed systems, cloud infrastructure, and application security.">
+  <meta property="og:image" content="https://iangabrielsanchez.com/assets/og-image.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="About — Ian Gabriel Sanchez">
+  <meta name="twitter:description" content="Background, certifications, and stack of Ian Gabriel Sanchez — a backend-focused software engineer specializing in distributed systems, cloud infrastructure, and application security.">
+  <meta name="twitter:image" content="https://iangabrielsanchez.com/assets/og-image.jpg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] },
+        extend: {
+          colors: { accent: '#ff4500' },
+          borderWidth: { '3': '3px' },
+          letterSpacing: { 'widest2': '0.14em' },
+        },
+      },
+    }
+  </script>
+</head>
+<body class="bg-white text-black font-sans min-h-screen flex flex-col">
+
+  <!-- ── NAV ── -->
+  <nav class="sticky top-0 z-50 bg-white border-b-3 border-black flex items-center justify-between px-10 h-[52px]">
+    <a href="/" class="text-[13px] font-black uppercase tracking-[.04em]">Ian Gabriel Sanchez</a>
+    <ul class="hidden md:flex gap-7">
+      <li><a href="/about.html"   class="text-[11px] text-black font-bold uppercase tracking-[.08em] border-b-2 border-accent pb-0.5">About</a></li>
+      <li><a href="/products.html" class="text-[11px] text-gray-500 uppercase tracking-[.08em] hover:text-black transition-colors">Products</a></li>
+      <li><a href="/lab.html"     class="text-[11px] text-gray-500 uppercase tracking-[.08em] hover:text-black transition-colors">Lab</a></li>
+      <li><a href="/blog.html"   class="text-[11px] text-gray-500 uppercase tracking-[.08em] hover:text-black transition-colors">Blog</a></li>
+      <li><a href="/portfolio.html"     class="text-[11px] text-gray-500 uppercase tracking-[.08em] hover:text-black transition-colors">Portfolio</a></li>
+    </ul>
+    <a href="mailto:contact@iangabrielsanchez.com" class="bg-accent text-white text-[11px] font-bold uppercase tracking-[.06em] px-4 py-2 shrink-0 whitespace-nowrap">
+      <span class="hidden sm:inline">Available for Contract →</span>
+      <span class="sm:hidden">Contact →</span>
+    </a>
+  </nav>
+
+  <main class="flex-1">
+
+  <!-- ── PAGE HEADER ── -->
+  <div class="border-b-3 border-black px-10 pt-14 pb-10 bg-white">
+    <p class="text-[10px] font-bold text-accent uppercase tracking-widest2 mb-3">Who I Am</p>
+    <h1 class="text-[clamp(48px,6vw,72px)] font-black uppercase leading-none tracking-[-0.03em]">About</h1>
+  </div>
+
+  <!-- ── MAIN CONTENT ── -->
+  <div class="grid grid-cols-1 md:grid-cols-[1fr_320px] border-b-3 border-black">
+
+    <!-- Left: bio -->
+    <div class="border-r-3 border-black px-10 py-14">
+      <p class="text-[10px] font-bold text-accent uppercase tracking-widest2 mb-6">Background</p>
+
+      <div class="space-y-5 text-[15px] text-gray-600 leading-relaxed max-w-2xl">
+        <p>
+          I'm a Software Engineer based in the <strong class="text-black font-semibold">Philippines</strong> with over 9 years building production backend systems — the kind that move money, authenticate users at scale, and keep running when things go wrong.
+        </p>
+        <p>
+          My work lives at the intersection of <strong class="text-black font-semibold">distributed systems</strong>, <strong class="text-black font-semibold">cloud infrastructure</strong>, and <strong class="text-black font-semibold">application security</strong>. I gravitate toward event-driven architectures, API design, and the unglamorous-but-critical work of making systems observable, testable, and maintainable long after the initial build.
+        </p>
+        <p>
+          I take security seriously as an engineering discipline, not an afterthought. I'm a <strong class="text-black font-semibold">Certified Web Penetration Tester (CWPT)</strong> and I'm pursuing a <strong class="text-black font-semibold">Professional Science Master's in Cybersecurity</strong>, which feeds directly into how I think about the systems I build.
+        </p>
+        <p>
+          Outside of client work, I run a <strong class="text-black font-semibold">Proxmox homelab</strong> that doubles as a personal infrastructure playground — CI runners, self-hosted services, and a place to break things safely. It's where a lot of my practical knowledge about networking, containers, and distributed systems has been earned the hard way.
+        </p>
+        <p>
+          I'm open to <strong class="text-black font-semibold">backend and platform engineering contracts</strong> — greenfield systems, migrations, performance work, or security-focused engagements. If the problem is hard and the stack is modern, I'm interested.
+        </p>
+      </div>
+
+      <!-- Divider -->
+      <div class="border-t-3 border-black mt-12 pt-10">
+        <h2 class="text-[10px] font-bold text-accent uppercase tracking-widest2 mb-6">How I Work</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-0 border-t-3 border-black">
+          <div class="border-r-3 border-black pr-8 pt-6">
+            <h3 class="text-[13px] font-black uppercase tracking-[.04em] mb-3">Backend-First</h3>
+            <p class="text-[13px] text-gray-500 leading-relaxed">I design for the API contract first, then build outward. Clean interfaces, consistent error surfaces, versioning from day one.</p>
+          </div>
+          <div class="border-r-3 border-black px-8 pt-6">
+            <h3 class="text-[13px] font-black uppercase tracking-[.04em] mb-3">Security by Default</h3>
+            <p class="text-[13px] text-gray-500 leading-relaxed">Threat modelling, input validation, least-privilege IAM, and dependency auditing are part of my normal build process — not a separate phase.</p>
+          </div>
+          <div class="pl-8 pt-6">
+            <h3 class="text-[13px] font-black uppercase tracking-[.04em] mb-3">Ownership Mindset</h3>
+            <p class="text-[13px] text-gray-500 leading-relaxed">I write runbooks, own alerts, and think about on-call before code ships. Systems I build are meant to be operated by humans under pressure.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right: quick facts -->
+    <div class="flex flex-col divide-y-3 divide-black">
+
+      <div class="px-8 py-8">
+        <p class="text-[9px] font-bold text-accent uppercase tracking-widest2 mb-4">Location</p>
+        <p class="text-[15px] font-black uppercase">Philippines</p>
+        <p class="text-[12px] text-gray-500 mt-1">Open to remote contracts worldwide</p>
+      </div>
+
+      <div class="px-8 py-8">
+        <p class="text-[9px] font-bold text-accent uppercase tracking-widest2 mb-4">Experience</p>
+        <p class="text-[36px] font-black leading-none">9+</p>
+        <p class="text-[12px] text-gray-500 mt-1 uppercase tracking-[.06em]">Years in production</p>
+      </div>
+
+      <div class="px-8 py-8">
+        <p class="text-[9px] font-bold text-accent uppercase tracking-widest2 mb-4">Certifications</p>
+        <div class="space-y-2">
+          <div class="flex items-center gap-3">
+            <span class="bg-accent text-white text-[10px] font-bold uppercase tracking-[.08em] px-2 py-0.5">CWPT</span>
+            <span class="text-[12px] text-black font-semibold">Certified Web Penetration Tester</span>
+          </div>
+          <p class="text-[11px] text-gray-500 pl-0">
+            Appkademiya · Issued Sep 2026 ·
+            <a href="https://appkademiya.online/verify/CERT-CERTIFIED-WEB-PENETRATION-TESTER-CWPT-20260915-A544838AB4D5" class="text-accent hover:underline" target="_blank" rel="noopener">Verify →</a>
+          </p>
+        </div>
+      </div>
+
+      <div class="px-8 py-8">
+        <p class="text-[9px] font-bold text-accent uppercase tracking-widest2 mb-4">Education</p>
+        <div class="space-y-4">
+          <div>
+            <p class="text-[13px] font-black uppercase">BS Computer Science</p>
+            <p class="text-[11px] text-gray-500 mt-0.5">Holy Angel University · Graduated 2018</p>
+          </div>
+          <div>
+            <p class="text-[13px] font-black uppercase">PSM Cybersecurity</p>
+            <p class="text-[11px] text-gray-500 mt-0.5">Holy Angel University · Expected 2028</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="px-8 py-8">
+        <p class="text-[9px] font-bold text-accent uppercase tracking-widest2 mb-4">Availability</p>
+        <div class="flex items-center gap-2 mb-2">
+          <span class="w-2 h-2 rounded-full bg-accent inline-block"></span>
+          <span class="text-[13px] font-black uppercase">Open to contracts</span>
+        </div>
+        <a href="mailto:contact@iangabrielsanchez.com" class="inline-block bg-accent text-white text-[11px] font-bold uppercase tracking-[.06em] px-4 py-2 mt-2">
+          Get in Touch →
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ── EXPERIENCE ── -->
+  <section class="px-10 pt-14 pb-0 bg-white border-b-3 border-black">
+    <p class="text-[10px] font-bold text-accent uppercase tracking-widest2 mb-3">9+ Years, Several Teams</p>
+    <h2 class="text-[32px] font-black uppercase tracking-tight border-b-3 border-black pb-5 mb-0 inline-block">Experience</h2>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 border-t-3 border-black mt-10">
+
+      <div class="border-r-3 border-b-3 border-black p-8">
+        <h3 class="text-[14px] font-black uppercase tracking-[.02em] mb-3">Backend &amp; Platform</h3>
+        <ul class="space-y-2.5">
+          <li class="text-[13px] text-gray-600 leading-relaxed">Designed and shipped event-driven microservices handling 50k+ transactions/day, including zero-downtime dual-write migrations off legacy monoliths</li>
+          <li class="text-[13px] text-gray-600 leading-relaxed">Migrated backend infrastructure to Infrastructure-as-Code (AWS CDK), cutting deployment time by 70% and enabling reproducible environments</li>
+          <li class="text-[13px] text-gray-600 leading-relaxed">Built automated data replication and synchronization pipelines across relational and NoSQL stores for reporting and analytics</li>
+          <li class="text-[13px] text-gray-600 leading-relaxed">Engineered integration layers and orchestration logic powering AI agent workflows across third-party APIs</li>
+        </ul>
+      </div>
+
+      <div class="border-b-3 border-black p-8">
+        <h3 class="text-[14px] font-black uppercase tracking-[.02em] mb-3">Leadership &amp; Delivery</h3>
+        <ul class="space-y-2.5">
+          <li class="text-[13px] text-gray-600 leading-relaxed">Led an engineering team of 6, owning technical roadmap, architecture decisions, hiring, and budget</li>
+          <li class="text-[13px] text-gray-600 leading-relaxed">Directed triage and resolution for critical production incidents, deploying hotfixes under pressure to minimize customer impact</li>
+          <li class="text-[13px] text-gray-600 leading-relaxed">Introduced CI/CD and structured development workflows, reducing release failures and increasing deployment frequency</li>
+          <li class="text-[13px] text-gray-600 leading-relaxed">Evaluated technical CVs and project submissions for engineering hires, focusing on real-world project relevance over pedigree</li>
+        </ul>
+      </div>
+
+      <div class="border-r-3 border-black p-8">
+        <h3 class="text-[14px] font-black uppercase tracking-[.02em] mb-3">Security &amp; Compliance</h3>
+        <ul class="space-y-2.5">
+          <li class="text-[13px] text-gray-600 leading-relaxed">Drove SOC 2 compliance efforts end-to-end, resolving both reported and self-identified vulnerabilities</li>
+          <li class="text-[13px] text-gray-600 leading-relaxed">Built automated evidence-collection pipelines that cut audit prep from three weeks to two days</li>
+          <li class="text-[13px] text-gray-600 leading-relaxed">Implemented rate limiting, abuse detection, and least-privilege access patterns across production services</li>
+        </ul>
+      </div>
+
+      <div class="p-8">
+        <h3 class="text-[14px] font-black uppercase tracking-[.02em] mb-3">Systems &amp; Tooling</h3>
+        <ul class="space-y-2.5">
+          <li class="text-[13px] text-gray-600 leading-relaxed">Designed database schemas and REST/RPC APIs for healthcare, billing, and SaaS platforms from the ground up</li>
+          <li class="text-[13px] text-gray-600 leading-relaxed">Built internal tooling to automate recurring operations, reducing manual effort and improving response times</li>
+          <li class="text-[13px] text-gray-600 leading-relaxed">Integrated event-driven microservices with Apache Kafka for reliable, ordered data transport</li>
+          <li class="text-[13px] text-gray-600 leading-relaxed">Wrote reusable integration components that reduced development effort for future third-party integrations</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── STACK ── -->
+  <section class="px-10 pt-14 pb-0 bg-white border-b-3 border-black">
+    <p class="text-[10px] font-bold text-accent uppercase tracking-widest2 mb-3">Tools & Technologies</p>
+    <h2 class="text-[32px] font-black uppercase tracking-tight border-b-3 border-black pb-5 mb-0 inline-block">Stack</h2>
+
+    <div class="grid grid-cols-2 md:grid-cols-4 border-t-3 border-black mt-10">
+
+      <div class="border-r-3 border-b-3 border-black p-8">
+        <p class="text-[9px] font-bold text-black uppercase tracking-widest2 mb-4">Languages</p>
+        <ul class="space-y-2">
+          <li class="text-[13px] text-gray-700">TypeScript</li>
+          <li class="text-[13px] text-gray-700">Java</li>
+          <li class="text-[13px] text-gray-700">SQL</li>
+          <li class="text-[13px] text-gray-700">Bash</li>
+        </ul>
+      </div>
+
+      <div class="border-r-3 border-b-3 border-black p-8">
+        <p class="text-[9px] font-bold text-black uppercase tracking-widest2 mb-4">Frameworks</p>
+        <ul class="space-y-2">
+          <li class="text-[13px] text-gray-700">NestJS</li>
+          <li class="text-[13px] text-gray-700">Spring Boot</li>
+          <li class="text-[13px] text-gray-700">React</li>
+          <li class="text-[13px] text-gray-700">Express</li>
+        </ul>
+      </div>
+
+      <div class="border-r-3 border-b-3 border-black p-8">
+        <p class="text-[9px] font-bold text-black uppercase tracking-widest2 mb-4">Infrastructure</p>
+        <ul class="space-y-2">
+          <li class="text-[13px] text-gray-700">AWS CDK</li>
+          <li class="text-[13px] text-gray-700">Docker</li>
+          <li class="text-[13px] text-gray-700">Proxmox</li>
+          <li class="text-[13px] text-gray-700">GitHub Actions</li>
+          <li class="text-[13px] text-gray-700">Tailscale</li>
+        </ul>
+      </div>
+
+      <div class="border-b-3 border-black p-8">
+        <p class="text-[9px] font-bold text-black uppercase tracking-widest2 mb-4">Data & Messaging</p>
+        <ul class="space-y-2">
+          <li class="text-[13px] text-gray-700">PostgreSQL</li>
+          <li class="text-[13px] text-gray-700">Kafka</li>
+          <li class="text-[13px] text-gray-700">Redis</li>
+          <li class="text-[13px] text-gray-700">MySQL</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  </main>
+
+  <!-- ── FOOTER ── -->
+  <footer class="bg-black border-t-3 border-black px-10 py-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+    <a href="/" class="text-[13px] font-black text-white uppercase tracking-[.04em]">Ian Gabriel Sanchez</a>
+    <div class="flex gap-6">
+      <a href="https://github.com/iangabrielsanchez" class="text-[11px] text-white/60 uppercase tracking-[.06em] hover:text-white transition-colors">GitHub</a>
+      <a href="https://linkedin.com/in/iangabrielsanchez" class="text-[11px] text-white/60 uppercase tracking-[.06em] hover:text-white transition-colors">LinkedIn</a>
+      <a href="mailto:contact@iangabrielsanchez.com" class="text-[11px] text-white/60 uppercase tracking-[.06em] hover:text-white transition-colors">Email</a>
+    </div>
+    <span class="text-[11px] text-white/40 tracking-[.04em]">© 2026 · Philippines</span>
+  </footer>
+
+</body>
+</html>

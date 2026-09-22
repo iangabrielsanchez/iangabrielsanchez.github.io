@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16.png">
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+  <title>Portfolio — Ian Gabriel Sanchez</title>
+  <meta name="description" id="meta-description" content="A project by Ian Gabriel Sanchez, a software engineer specializing in event-driven systems and cloud infrastructure.">
+  <link rel="canonical" id="meta-canonical" href="https://iangabrielsanchez.com/portfolio">
+
+  <meta property="og:type" content="article">
+  <meta property="og:url" id="meta-og-url" content="https://iangabrielsanchez.com/portfolio">
+  <meta property="og:title" id="meta-og-title" content="Portfolio — Ian Gabriel Sanchez">
+  <meta property="og:description" id="meta-og-description" content="A project by Ian Gabriel Sanchez, a software engineer specializing in event-driven systems and cloud infrastructure.">
+  <meta property="og:image" content="https://iangabrielsanchez.com/assets/og-image.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" id="meta-twitter-title" content="Portfolio — Ian Gabriel Sanchez">
+  <meta name="twitter:description" id="meta-twitter-description" content="A project by Ian Gabriel Sanchez, a software engineer specializing in event-driven systems and cloud infrastructure.">
+  <meta name="twitter:image" content="https://iangabrielsanchez.com/assets/og-image.jpg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/9.1.6/marked.min.js"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] },
+        extend: {
+          colors: { accent: '#ff4500' },
+          borderWidth: { '3': '3px' },
+          letterSpacing: { 'widest2': '0.14em' },
+        },
+      },
+    }
+  </script>
+  <style>
+    .prose h1 { display: none; }
+    .prose h2 { font-size: 1.2rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0.01em; margin-top: 2.5rem; margin-bottom: 0.75rem; }
+    .prose h3 { font-size: 1rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0.03em; margin-top: 2rem; margin-bottom: 0.5rem; }
+    .prose p { font-size: 0.9375rem; color: #4b5563; line-height: 1.75; margin-bottom: 1.25rem; }
+    .prose strong { color: black; font-weight: 600; }
+    .prose a { color: #ff4500; text-decoration: underline; }
+    .prose ul { list-style: disc; padding-left: 1.5rem; margin-bottom: 1.25rem; }
+    .prose ol { list-style: decimal; padding-left: 1.5rem; margin-bottom: 1.25rem; }
+    .prose li { font-size: 0.9375rem; color: #4b5563; line-height: 1.75; margin-bottom: 0.25rem; }
+    .prose li strong { color: black; }
+    .prose blockquote { border-left: 3px solid #ff4500; padding-left: 1.25rem; margin: 1.5rem 0; font-style: italic; color: #6b7280; }
+    .prose code { font-family: 'Courier New', monospace; font-size: 0.8125rem; background: black; color: white; padding: 0.15rem 0.4rem; }
+    .prose pre { background: black; padding: 1.5rem; margin: 1.5rem 0; overflow-x: auto; border: 3px solid black; }
+    .prose pre code { background: transparent; padding: 0; color: #e5e7eb; font-size: 0.8125rem; line-height: 1.6; }
+    .prose hr { border: none; border-top: 3px solid black; margin: 2.5rem 0; }
+    .prose img { display: block; width: 100%; border: 3px solid black; margin-top: 2rem; }
+    .prose p:has(> img) { margin-bottom: 0.5rem; }
+    .prose p:has(> img) + p em { display: block; text-align: center; font-size: 0.8125rem; color: #9ca3af; margin-bottom: 2rem; }
+  </style>
+</head>
+<body class="bg-white text-black font-sans min-h-screen flex flex-col">
+
+  <!-- ── NAV ── -->
+  <nav class="sticky top-0 z-50 bg-white border-b-3 border-black flex items-center justify-between px-10 h-[52px]">
+    <a href="/" class="text-[13px] font-black uppercase tracking-[.04em]">Ian Gabriel Sanchez</a>
+    <ul class="hidden md:flex gap-7">
+      <li><a href="/about.html"    class="text-[11px] text-gray-500 uppercase tracking-[.08em] hover:text-black transition-colors">About</a></li>
+      <li><a href="/products.html" class="text-[11px] text-gray-500 uppercase tracking-[.08em] hover:text-black transition-colors">Products</a></li>
+      <li><a href="/lab.html"      class="text-[11px] text-gray-500 uppercase tracking-[.08em] hover:text-black transition-colors">Lab</a></li>
+      <li><a href="/blog.html"    class="text-[11px] text-gray-500 uppercase tracking-[.08em] hover:text-black transition-colors">Blog</a></li>
+      <li><a href="/portfolio.html"     class="text-[11px] text-black font-bold uppercase tracking-[.08em] border-b-2 border-accent pb-0.5">Portfolio</a></li>
+    </ul>
+    <a href="mailto:contact@iangabrielsanchez.com" class="bg-accent text-white text-[11px] font-bold uppercase tracking-[.06em] px-4 py-2 shrink-0 whitespace-nowrap">
+      <span class="hidden sm:inline">Available for Contract →</span>
+      <span class="sm:hidden">Contact →</span>
+    </a>
+  </nav>
+
+  <main class="flex-1">
+
+  <!-- ── PAGE HEADER ── -->
+  <div class="border-b-3 border-black px-10 pt-14 pb-10 bg-white">
+    <a href="/portfolio.html" class="text-[10px] font-bold uppercase tracking-[.08em] text-gray-400 hover:text-black transition-colors">← Back to Portfolio</a>
+    <p id="meta-category" class="text-[10px] font-bold text-accent uppercase tracking-widest2 mt-6 mb-3"></p>
+    <h1 id="meta-title" class="text-[clamp(36px,5vw,60px)] font-black uppercase leading-[.98] tracking-[-0.03em] max-w-4xl"></h1>
+    <p id="meta-date" class="text-[12px] text-gray-400 tracking-[.04em] mt-5"></p>
+  </div>
+
+  <!-- ── MAIN CONTENT ── -->
+  <div class="grid grid-cols-1 md:grid-cols-[1fr_320px] border-b-3 border-black">
+
+    <!-- Left: article -->
+    <div class="border-r-3 border-black px-10 py-14">
+      <div id="content" class="prose">
+        <div class="text-[13px] text-gray-400">Loading…</div>
+      </div>
+    </div>
+
+    <!-- Right: meta / tags -->
+    <div class="flex flex-col divide-y-3 divide-black">
+      <div class="px-8 py-8">
+        <p class="text-[9px] font-bold text-accent uppercase tracking-widest2 mb-4">Category</p>
+        <a id="meta-category-2" href="#" class="text-[15px] font-black uppercase hover:text-accent transition-colors"></a>
+      </div>
+      <div class="px-8 py-8">
+        <p class="text-[9px] font-bold text-accent uppercase tracking-widest2 mb-4">Date</p>
+        <p id="meta-date-2" class="text-[13px] text-gray-600 font-semibold"></p>
+      </div>
+      <div id="tags-bar" class="hidden px-8 py-8">
+        <p class="text-[9px] font-bold text-accent uppercase tracking-widest2 mb-4">Tags</p>
+        <div id="tags-list" class="flex flex-wrap gap-1.5"></div>
+      </div>
+      <div class="px-8 py-8">
+        <p class="text-[9px] font-bold text-accent uppercase tracking-widest2 mb-4">Interested?</p>
+        <a href="mailto:contact@iangabrielsanchez.com" class="inline-block bg-accent text-white text-[11px] font-bold uppercase tracking-[.06em] px-4 py-2 mt-2">
+          Get in Touch →
+        </a>
+      </div>
+    </div>
+  </div>
+
+  </main>
+
+  <!-- ── FOOTER ── -->
+  <footer class="bg-black border-t-3 border-black px-10 py-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+    <a href="/" class="text-[13px] font-black text-white uppercase tracking-[.04em]">Ian Gabriel Sanchez</a>
+    <div class="flex gap-6">
+      <a href="https://github.com/iangabrielsanchez" class="text-[11px] text-white/60 uppercase tracking-[.06em] hover:text-white transition-colors">GitHub</a>
+      <a href="https://linkedin.com/in/iangabrielsanchez" class="text-[11px] text-white/60 uppercase tracking-[.06em] hover:text-white transition-colors">LinkedIn</a>
+      <a href="mailto:contact@iangabrielsanchez.com" class="text-[11px] text-white/60 uppercase tracking-[.06em] hover:text-white transition-colors">Email</a>
+    </div>
+    <span class="text-[11px] text-white/40 tracking-[.04em]">© 2026 · Philippines</span>
+  </footer>
+
+  <script>
+    const slug = decodeURIComponent(location.pathname.replace(/^\/portfolio\/?/, ''));
+
+    if (!slug) {
+      document.getElementById('content').innerHTML = '<p>Item not found.</p>';
+    } else {
+      Promise.all([
+        fetch(`/content/projects/index.json`).then(r => r.json()),
+        fetch(`/content/projects/${slug}.md`).then(r => {
+          if (!r.ok) throw new Error('not found');
+          return r.text();
+        })
+      ]).then(([index, md]) => {
+        const meta = index.find(p => p.slug === slug);
+
+        if (meta) {
+          document.title = `${meta.title} — Ian Gabriel Sanchez`;
+          document.getElementById('meta-title').textContent = meta.title;
+
+          const pageUrl = `https://iangabrielsanchez.com/portfolio/${meta.slug}`;
+          const pageTitle = `${meta.title} — Ian Gabriel Sanchez`;
+          document.getElementById('meta-description').setAttribute('content', meta.description);
+          document.getElementById('meta-canonical').setAttribute('href', pageUrl);
+          document.getElementById('meta-og-url').setAttribute('content', pageUrl);
+          document.getElementById('meta-og-title').setAttribute('content', pageTitle);
+          document.getElementById('meta-og-description').setAttribute('content', meta.description);
+          document.getElementById('meta-twitter-title').setAttribute('content', pageTitle);
+          document.getElementById('meta-twitter-description').setAttribute('content', meta.description);
+
+          document.getElementById('meta-category').textContent = meta.category;
+          const catLink = document.getElementById('meta-category-2');
+          catLink.textContent = meta.category;
+          catLink.href = `/portfolio?filter=${encodeURIComponent(meta.category)}`;
+          document.getElementById('meta-date').textContent = meta.date;
+          document.getElementById('meta-date-2').textContent = meta.date;
+
+          if (meta.tags && meta.tags.length) {
+            const bar = document.getElementById('tags-bar');
+            bar.classList.remove('hidden');
+            document.getElementById('tags-list').innerHTML = meta.tags.map(t =>
+              `<a href="/portfolio?filter=${encodeURIComponent(t)}" class="text-[10px] text-gray-600 hover:text-white hover:bg-black border border-gray-300 hover:border-black px-2.5 py-1 tracking-[.04em] transition-colors">${t}</a>`
+            ).join('');
+          }
+        }
+
+        document.getElementById('content').innerHTML = marked.parse(md);
+      }).catch(() => {
+        document.getElementById('content').innerHTML = '<p>Item not found.</p>';
+      });
+    }
+  </script>
+</body>
+</html>
