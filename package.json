@@ -1,0 +1,24 @@
+{
+  "name": "iangabrielsanchez.github.io",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build:css": "tailwindcss -i ./src/input.css -o ./styles.css --minify",
+    "watch:css": "tailwindcss -i ./src/input.css -o ./styles.css --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iangabrielsanchez/iangabrielsanchez.github.io.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/iangabrielsanchez/iangabrielsanchez.github.io/issues"
+  },
+  "homepage": "https://github.com/iangabrielsanchez/iangabrielsanchez.github.io#readme",
+  "devDependencies": {
+    "tailwindcss": "^3.4.19"
+  }
+}
