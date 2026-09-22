@@ -2,26 +2,22 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://iangabrielsanchez.com/</loc>
+    <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://iangabrielsanchez.com/about</loc>
+    <loc>https://iangabrielsanchez.com/about.html</loc>
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://iangabrielsanchez.com/portfolio</loc>
+    <loc>https://iangabrielsanchez.com/products.html</loc>
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://iangabrielsanchez.com/lab</loc>
+    <loc>https://iangabrielsanchez.com/lab.html</loc>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://iangabrielsanchez.com/blog</loc>
-  </url>
-  <url>
-    <loc>https://iangabrielsanchez.com/products</loc>
-  </url>
-  <url>
-    <loc>https://iangabrielsanchez.com/product/sim</loc>
-  </url>
-  <url>
-    <loc>https://iangabrielsanchez.com/product/sim-retail</loc>
+    <loc>https://iangabrielsanchez.com/blog.html</loc>
+    <priority>0.7</priority>
   </url>
 </urlset>
