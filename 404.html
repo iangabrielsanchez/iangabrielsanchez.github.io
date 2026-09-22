@@ -3,14 +3,86 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ian Gabriel Sanchez</title>
+  <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16.png">
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+  <title>Page Not Found — Ian Gabriel Sanchez</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] },
+        extend: {
+          colors: { accent: '#ff4500' },
+          borderWidth: { '3': '3px' },
+          letterSpacing: { 'widest2': '0.14em' },
+        },
+      },
+    }
+  </script>
 </head>
-<body style="background:#000;">
+<body class="bg-white text-black font-sans min-h-screen flex flex-col">
+
+  <!-- ── NAV ── -->
+  <nav class="sticky top-0 z-50 bg-white border-b-3 border-black flex items-center justify-between px-10 h-[52px]">
+    <a href="/" class="text-[13px] font-black uppercase tracking-[.04em]">Ian Gabriel Sanchez</a>
+    <ul class="hidden md:flex gap-7">
+      <li><a href="/about.html"    class="text-[11px] text-gray-500 uppercase tracking-[.08em] hover:text-black transition-colors">About</a></li>
+      <li><a href="/products.html" class="text-[11px] text-gray-500 uppercase tracking-[.08em] hover:text-black transition-colors">Products</a></li>
+      <li><a href="/lab.html"      class="text-[11px] text-gray-500 uppercase tracking-[.08em] hover:text-black transition-colors">Lab</a></li>
+      <li><a href="/blog.html"    class="text-[11px] text-gray-500 uppercase tracking-[.08em] hover:text-black transition-colors">Blog</a></li>
+      <li><a href="/portfolio.html" class="text-[11px] text-gray-500 uppercase tracking-[.08em] hover:text-black transition-colors">Portfolio</a></li>
+    </ul>
+    <a href="mailto:contact@iangabrielsanchez.com" class="bg-accent text-white text-[11px] font-bold uppercase tracking-[.06em] px-4 py-2 shrink-0 whitespace-nowrap">
+      <span class="hidden sm:inline">Available for Contract →</span>
+      <span class="sm:hidden">Contact →</span>
+    </a>
+  </nav>
+
+  <main class="flex-1" id="app-root">
+
+  <!-- ── 404 ── -->
+  <div id="not-found" class="border-b-3 border-black px-10 pt-14 pb-16">
+    <p class="text-[10px] font-bold text-accent uppercase tracking-widest2 mb-3">Error 404</p>
+    <h1 class="text-[clamp(64px,14vw,180px)] font-black uppercase leading-none tracking-[-0.03em] mb-6">Lost.</h1>
+    <p class="text-[15px] text-gray-500 max-w-xl leading-relaxed mb-8">
+      This route doesn't resolve — kind of like a dependency I forgot to update. Moved, renamed, or it never shipped. Try one of these instead:
+    </p>
+    <div class="flex flex-wrap gap-2">
+      <a href="/" class="bg-accent text-white text-[12px] font-bold uppercase tracking-[.08em] px-6 py-3">
+        Go Home →
+      </a>
+      <a href="/portfolio.html" class="border-3 border-black text-black text-[12px] font-bold uppercase tracking-[.08em] px-6 py-3 hover:bg-black hover:text-white transition-colors">
+        View Portfolio
+      </a>
+      <a href="/products.html" class="border-3 border-black text-black text-[12px] font-bold uppercase tracking-[.08em] px-6 py-3 hover:bg-black hover:text-white transition-colors">
+        View Products
+      </a>
+    </div>
+  </div>
+
+  </main>
+
+  <!-- ── FOOTER ── -->
+  <footer class="bg-black border-t-3 border-black px-10 py-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+    <a href="/" class="text-[13px] font-black text-white uppercase tracking-[.04em]">Ian Gabriel Sanchez</a>
+    <div class="flex gap-6">
+      <a href="https://github.com/iangabrielsanchez" class="text-[11px] text-white/60 uppercase tracking-[.06em] hover:text-white transition-colors">GitHub</a>
+      <a href="https://linkedin.com/in/iangabrielsanchez" class="text-[11px] text-white/60 uppercase tracking-[.06em] hover:text-white transition-colors">LinkedIn</a>
+      <a href="mailto:contact@iangabrielsanchez.com" class="text-[11px] text-white/60 uppercase tracking-[.06em] hover:text-white transition-colors">Email</a>
+    </div>
+    <span class="text-[11px] text-white/40 tracking-[.04em]">© 2026 · Philippines</span>
+  </footer>
+
   <script>
     // GitHub Pages has no server-side rewrites, so clean URLs like
     // /product/sim or /about fall through to this 404 page. We map
     // the path to the real static file, fetch its HTML, and swap it
-    // in while keeping the pretty URL in the address bar.
+    // in while keeping the pretty URL in the address bar. If the
+    // path doesn't match a known route, the 404 content above stays.
     (function () {
       var path = location.pathname.replace(/\/+$/, '') || '/';
 
@@ -40,15 +112,7 @@
         }
       }
 
-      if (!target) {
-        // No known route — leave the default 404 message in place.
-        document.body.style.background = '#fff';
-        document.body.innerHTML = '<div style="font-family:system-ui,sans-serif;padding:80px 40px;max-width:640px;">' +
-          '<h1 style="font-size:28px;margin-bottom:12px;">Page not found</h1>' +
-          '<p style="color:#666;">This page doesn\'t exist. <a href="/" style="color:#ff4500;">Go home →</a></p>' +
-          '</div>';
-        return;
-      }
+      if (!target) return;
 
       fetch(target)
         .then(function (r) {
@@ -62,11 +126,8 @@
           document.close();
         })
         .catch(function () {
-          document.body.style.background = '#fff';
-          document.body.innerHTML = '<div style="font-family:system-ui,sans-serif;padding:80px 40px;max-width:640px;">' +
-            '<h1 style="font-size:28px;margin-bottom:12px;">Page not found</h1>' +
-            '<p style="color:#666;">This page doesn\'t exist. <a href="/" style="color:#ff4500;">Go home →</a></p>' +
-            '</div>';
+          // Route looked valid but the fetch failed — leave the
+          // static 404 content in place, it's already showing.
         });
     })();
   </script>
