@@ -69,26 +69,31 @@
 </head>
 <body class="bg-white text-black font-sans min-h-screen flex flex-col">
 
+  <div class="max-w-[1400px] w-full mx-auto flex flex-col flex-1 bg-white">
+
   <!-- ── NAV ── -->
-  <nav class="sticky top-0 z-50 bg-white border-b-3 border-black flex items-center justify-between px-10 h-[52px]">
-    <a href="/" class="text-[13px] font-black uppercase tracking-[.04em]">Ian Gabriel Sanchez</a>
-    <ul class="hidden md:flex gap-7">
-      <li><a href="/about.html"    class="text-[11px] text-gray-500 uppercase tracking-[.08em] hover:text-black transition-colors">About</a></li>
-      <li><a href="/products.html" class="text-[11px] text-gray-500 uppercase tracking-[.08em] hover:text-black transition-colors">Products</a></li>
-      <li><a href="/lab.html"      class="text-[11px] text-gray-500 uppercase tracking-[.08em] hover:text-black transition-colors">Lab</a></li>
-      <li><a href="/blog.html"    class="text-[11px] text-gray-500 uppercase tracking-[.08em] hover:text-black transition-colors">Blog</a></li>
-      <li><a href="/portfolio.html"     class="text-[11px] text-gray-500 uppercase tracking-[.08em] hover:text-black transition-colors">Portfolio</a></li>
-    </ul>
-    <a href="mailto:contact@iangabrielsanchez.com" class="bg-accent text-white text-[11px] font-bold uppercase tracking-[.06em] px-4 py-2 shrink-0 whitespace-nowrap">
-      <span class="hidden sm:inline">Available for Contract →</span>
-      <span class="sm:hidden">Contact →</span>
-    </a>
+  <nav class="sticky top-0 z-50 bg-white border-b-3 border-black h-[52px]">
+    <div class="h-full flex items-center justify-between px-10">
+      <a href="/" class="text-[13px] font-black uppercase tracking-[.04em]">Ian Gabriel Sanchez</a>
+      <ul class="hidden md:flex gap-7">
+        <li><a href="/about.html"    class="text-[11px] text-gray-500 uppercase tracking-[.08em] hover:text-black transition-colors">About</a></li>
+        <li><a href="/products.html" class="text-[11px] text-gray-500 uppercase tracking-[.08em] hover:text-black transition-colors">Products</a></li>
+        <li><a href="/lab.html"      class="text-[11px] text-gray-500 uppercase tracking-[.08em] hover:text-black transition-colors">Lab</a></li>
+        <li><a href="/blog.html"    class="text-[11px] text-gray-500 uppercase tracking-[.08em] hover:text-black transition-colors">Blog</a></li>
+        <li><a href="/portfolio.html"     class="text-[11px] text-gray-500 uppercase tracking-[.08em] hover:text-black transition-colors">Portfolio</a></li>
+      </ul>
+      <a href="mailto:contact@iangabrielsanchez.com" class="bg-accent text-white text-[11px] font-bold uppercase tracking-[.06em] px-4 py-2 shrink-0 whitespace-nowrap">
+        <span class="hidden sm:inline">Available for Contract →</span>
+        <span class="sm:hidden">Contact →</span>
+      </a>
+    </div>
   </nav>
 
   <main class="flex-1">
 
   <!-- ── HERO ── -->
-  <section id="about" class="bg-white border-b-3 border-black px-10 pt-[72px] pb-14">
+  <section id="about" class="bg-white border-b-3 border-black">
+    <div class="px-10 pt-[72px] pb-14">
     <h1 class="text-[clamp(48px,7vw,80px)] font-black uppercase leading-[.92] tracking-[-0.035em] max-w-5xl">
       Building Backends<br>
       That<span class="text-accent"> Scale.</span>
@@ -108,10 +113,12 @@
         </a>
       </div>
     </div>
+    </div>
   </section>
 
   <!-- ── STATS BAR ── -->
-  <div class="grid grid-cols-2 md:grid-cols-5 bg-black border-b-3 border-black">
+  <div class="bg-black border-b-3 border-black">
+  <div class="grid grid-cols-2 md:grid-cols-5">
     <div class="border-r border-white/10 px-5 md:px-10 py-7 min-w-0">
       <div class="text-[40px] font-black text-white leading-none tracking-tight">9+</div>
       <div class="text-[10px] text-white/70 uppercase tracking-[.12em] mt-1">Years Experience</div>
@@ -138,35 +145,45 @@
       <div class="text-[10px] text-white/70 uppercase tracking-[.12em] mt-1">Cybersecurity · In Progress</div>
     </div>
   </div>
+  </div>
 
   <!-- ── PRODUCTS ── -->
-  <section id="products-section" class="bg-white px-10 pt-16 pb-0 hidden">
+  <section id="products-section" class="bg-white hidden">
+    <div class="px-10 pt-16 pb-0">
     <p class="text-[10px] font-bold text-accent uppercase tracking-widest2 mb-3">Personally Built & Shipped</p>
     <h2 class="text-[32px] font-black uppercase tracking-tight border-b-3 border-black pb-5 mb-0 inline-block">Products</h2>
 
     <div id="products-grid" class="grid grid-cols-1 md:grid-cols-2 border-t-3 border-black mt-10"></div>
+    </div>
 
-    <a href="/products.html" class="flex items-center justify-between border-t-3 border-black px-10 py-5 hover:bg-black hover:text-white transition-colors group">
-      <span id="products-cta" class="text-[11px] font-bold uppercase tracking-[.1em]">View all products</span>
-      <span class="text-[11px] font-bold group-hover:translate-x-1 transition-transform">→</span>
+    <a href="/products.html" class="block border-t-3 border-black">
+      <div class="px-10 py-5 flex items-center justify-between hover:bg-black hover:text-white transition-colors group">
+        <span id="products-cta" class="text-[11px] font-bold uppercase tracking-[.1em]">View all products</span>
+        <span class="text-[11px] font-bold group-hover:translate-x-1 transition-transform">→</span>
+      </div>
     </a>
   </section>
 
   <!-- ── WORK ── -->
-  <section id="work-section" class="bg-white px-10 pt-16 pb-0 hidden">
+  <section id="work-section" class="bg-white hidden">
+    <div class="px-10 pt-16 pb-0">
     <p class="text-[10px] font-bold text-accent uppercase tracking-widest2 mb-3">Selected Work</p>
     <h2 class="text-[32px] font-black uppercase tracking-tight border-b-3 border-black pb-5 mb-0 inline-block">Portfolio</h2>
 
     <div id="work-grid" class="grid grid-cols-1 md:grid-cols-3 border-t-3 border-black mt-10"></div>
+    </div>
 
-    <a href="/portfolio.html" class="flex items-center justify-between border-t-3 border-black px-10 py-5 hover:bg-black hover:text-white transition-colors group">
-      <span id="work-cta" class="text-[11px] font-bold uppercase tracking-[.1em]">View all portfolio items</span>
-      <span class="text-[11px] font-bold group-hover:translate-x-1 transition-transform">→</span>
+    <a href="/portfolio.html" class="block border-t-3 border-black">
+      <div class="px-10 py-5 flex items-center justify-between hover:bg-black hover:text-white transition-colors group">
+        <span id="work-cta" class="text-[11px] font-bold uppercase tracking-[.1em]">View all portfolio items</span>
+        <span class="text-[11px] font-bold group-hover:translate-x-1 transition-transform">→</span>
+      </div>
     </a>
   </section>
 
   <!-- ── LAB ── -->
-  <section class="bg-black border-t-3 border-b-3 border-black px-10 pt-16 pb-0">
+  <section class="bg-black border-t-3 border-b-3 border-black">
+    <div class="px-10 pt-16 pb-0">
     <p class="text-[10px] font-bold text-accent uppercase tracking-widest2 mb-3">Infrastructure</p>
     <h2 class="text-[32px] font-black uppercase tracking-tight text-white border-b-3 border-white pb-5 mb-0 inline-block">The Lab</h2>
 
@@ -200,37 +217,48 @@
       </div>
 
     </div>
-    <a href="/lab.html" class="flex items-center justify-between border-t-3 border-white/20 px-10 py-5 hover:bg-white hover:text-black transition-colors group">
-      <span class="text-[11px] font-bold uppercase tracking-[.1em] text-white group-hover:text-black">Explore the full lab</span>
-      <span class="text-[11px] font-bold text-white group-hover:text-black group-hover:translate-x-1 transition-transform">→</span>
+    </div>
+    <a href="/lab.html" class="block border-t-3 border-white/20">
+      <div class="px-10 py-5 flex items-center justify-between hover:bg-white hover:text-black transition-colors group">
+        <span class="text-[11px] font-bold uppercase tracking-[.1em] text-white group-hover:text-black">Explore the full lab</span>
+        <span class="text-[11px] font-bold text-white group-hover:text-black group-hover:translate-x-1 transition-transform">→</span>
+      </div>
     </a>
   </section>
 
   <!-- ── BLOG ── -->
-  <section id="blog-section" class="bg-white px-10 pt-16 pb-0 hidden">
+  <section id="blog-section" class="bg-white hidden">
+    <div class="px-10 pt-16 pb-0">
     <p class="text-[10px] font-bold text-accent uppercase tracking-widest2 mb-3">Writing</p>
     <h2 class="text-[32px] font-black uppercase tracking-tight border-b-3 border-black pb-5 mb-0 inline-block">Blog</h2>
 
     <div id="blog-grid" class="grid grid-cols-1 md:grid-cols-3 border-t-3 border-black mt-10"></div>
+    </div>
 
-    <a href="/blog.html" class="flex items-center justify-between border-t-3 border-black px-10 py-5 hover:bg-black hover:text-white transition-colors group">
-      <span class="text-[11px] font-bold uppercase tracking-[.1em]">Read all posts</span>
-      <span class="text-[11px] font-bold group-hover:translate-x-1 transition-transform">→</span>
+    <a href="/blog.html" class="block border-t-3 border-black">
+      <div class="px-10 py-5 flex items-center justify-between hover:bg-black hover:text-white transition-colors group">
+        <span class="text-[11px] font-bold uppercase tracking-[.1em]">Read all posts</span>
+        <span class="text-[11px] font-bold group-hover:translate-x-1 transition-transform">→</span>
+      </div>
     </a>
   </section>
 
   </main>
 
   <!-- ── FOOTER ── -->
-  <footer class="bg-black border-t-3 border-black px-10 py-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
-    <span class="text-[13px] font-black text-white uppercase tracking-[.04em]">Ian Gabriel Sanchez</span>
-    <div class="flex gap-6">
-      <a href="https://github.com/iangabrielsanchez" class="text-[11px] text-white/60 uppercase tracking-[.06em] hover:text-white transition-colors">GitHub</a>
-      <a href="https://linkedin.com/in/iangabrielsanchez" class="text-[11px] text-white/60 uppercase tracking-[.06em] hover:text-white transition-colors">LinkedIn</a>
-      <a href="mailto:contact@iangabrielsanchez.com" class="text-[11px] text-white/60 uppercase tracking-[.06em] hover:text-white transition-colors">Email</a>
+  <footer class="bg-black border-t-3 border-black">
+    <div class="px-10 py-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+      <span class="text-[13px] font-black text-white uppercase tracking-[.04em]">Ian Gabriel Sanchez</span>
+      <div class="flex gap-6">
+        <a href="https://github.com/iangabrielsanchez" class="text-[11px] text-white/60 uppercase tracking-[.06em] hover:text-white transition-colors">GitHub</a>
+        <a href="https://linkedin.com/in/iangabrielsanchez" class="text-[11px] text-white/60 uppercase tracking-[.06em] hover:text-white transition-colors">LinkedIn</a>
+        <a href="mailto:contact@iangabrielsanchez.com" class="text-[11px] text-white/60 uppercase tracking-[.06em] hover:text-white transition-colors">Email</a>
+      </div>
+      <span class="text-[11px] text-white/40 tracking-[.04em]">© 2026 · Philippines</span>
     </div>
-    <span class="text-[11px] text-white/40 tracking-[.04em]">© 2026 · Philippines</span>
   </footer>
+
+  </div>
 
   <script>
     function cardBorder3(i, total) {

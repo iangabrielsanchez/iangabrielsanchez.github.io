@@ -40,38 +40,48 @@
 </head>
 <body class="bg-white text-black font-sans min-h-screen flex flex-col">
 
+  <div class="max-w-[1400px] w-full mx-auto flex flex-col flex-1 bg-white">
+
   <!-- ── NAV ── -->
-  <nav class="sticky top-0 z-50 bg-white border-b-3 border-black flex items-center justify-between px-10 h-[52px]">
-    <a href="/" class="text-[13px] font-black uppercase tracking-[.04em]">Ian Gabriel Sanchez</a>
-    <ul class="hidden md:flex gap-7">
-      <li><a href="/about.html"    class="text-[11px] text-gray-500 uppercase tracking-[.08em] hover:text-black transition-colors">About</a></li>
-      <li><a href="/products.html" class="text-[11px] text-gray-500 uppercase tracking-[.08em] hover:text-black transition-colors">Products</a></li>
-      <li><a href="/lab.html"      class="text-[11px] text-gray-500 uppercase tracking-[.08em] hover:text-black transition-colors">Lab</a></li>
-      <li><a href="/blog.html"    class="text-[11px] text-gray-500 uppercase tracking-[.08em] hover:text-black transition-colors">Blog</a></li>
-      <li><a href="/portfolio.html"     class="text-[11px] text-black font-bold uppercase tracking-[.08em] border-b-2 border-accent pb-0.5">Portfolio</a></li>
-    </ul>
-    <a href="mailto:contact@iangabrielsanchez.com" class="bg-accent text-white text-[11px] font-bold uppercase tracking-[.06em] px-4 py-2 shrink-0 whitespace-nowrap">
-      <span class="hidden sm:inline">Available for Contract →</span>
-      <span class="sm:hidden">Contact →</span>
-    </a>
+  <nav class="sticky top-0 z-50 bg-white border-b-3 border-black h-[52px]">
+    <div class="h-full flex items-center justify-between px-10">
+      <a href="/" class="text-[13px] font-black uppercase tracking-[.04em]">Ian Gabriel Sanchez</a>
+      <ul class="hidden md:flex gap-7">
+        <li><a href="/about.html"    class="text-[11px] text-gray-500 uppercase tracking-[.08em] hover:text-black transition-colors">About</a></li>
+        <li><a href="/products.html" class="text-[11px] text-gray-500 uppercase tracking-[.08em] hover:text-black transition-colors">Products</a></li>
+        <li><a href="/lab.html"      class="text-[11px] text-gray-500 uppercase tracking-[.08em] hover:text-black transition-colors">Lab</a></li>
+        <li><a href="/blog.html"    class="text-[11px] text-gray-500 uppercase tracking-[.08em] hover:text-black transition-colors">Blog</a></li>
+        <li><a href="/portfolio.html"     class="text-[11px] text-black font-bold uppercase tracking-[.08em] border-b-2 border-accent pb-0.5">Portfolio</a></li>
+      </ul>
+      <a href="mailto:contact@iangabrielsanchez.com" class="bg-accent text-white text-[11px] font-bold uppercase tracking-[.06em] px-4 py-2 shrink-0 whitespace-nowrap">
+        <span class="hidden sm:inline">Available for Contract →</span>
+        <span class="sm:hidden">Contact →</span>
+      </a>
+    </div>
   </nav>
 
   <main class="flex-1">
 
   <!-- ── PAGE HEADER ── -->
-  <div class="border-b-3 border-black px-10 pt-14 pb-10 bg-white">
-    <p class="text-[10px] font-bold text-accent uppercase tracking-widest2 mb-3">Selected Work</p>
-    <h1 class="text-[clamp(48px,6vw,72px)] font-black uppercase leading-none tracking-[-0.03em]">Portfolio</h1>
+  <div class="border-b-3 border-black bg-white">
+    <div class="px-10 pt-14 pb-10">
+      <p class="text-[10px] font-bold text-accent uppercase tracking-widest2 mb-3">Selected Work</p>
+      <h1 class="text-[clamp(48px,6vw,72px)] font-black uppercase leading-none tracking-[-0.03em]">Portfolio</h1>
+    </div>
   </div>
 
   <!-- ── FILTER BAR ── -->
-  <div id="filter-bar" class="border-b-3 border-black px-10 py-5 flex flex-wrap items-center gap-2 bg-white">
-    <div class="text-[13px] text-gray-400">Loading filters…</div>
+  <div class="border-b-3 border-black bg-white">
+    <div id="filter-bar" class="px-10 py-5 flex flex-wrap items-center gap-2">
+      <div class="text-[13px] text-gray-400">Loading filters…</div>
+    </div>
   </div>
 
   <!-- ── PROJECT GRID ── -->
-  <div id="work-grid" class="grid grid-cols-1 md:grid-cols-3 border-b-3 border-black">
-    <div class="col-span-3 p-10 text-[13px] text-gray-400">Loading…</div>
+  <div class="border-b-3 border-black">
+    <div id="work-grid" class="grid grid-cols-1 md:grid-cols-3">
+      <div class="col-span-3 p-10 text-[13px] text-gray-400">Loading…</div>
+    </div>
   </div>
 
   <script>
@@ -158,27 +168,33 @@
   </script>
 
   <!-- ── CTA ── -->
-  <div class="border-b-3 border-black px-10 py-12 bg-white">
-    <p class="text-[10px] font-bold text-accent uppercase tracking-widest2 mb-4">Open to contracts</p>
-    <h2 class="text-[28px] font-black uppercase tracking-tight mb-4">Have a hard problem?</h2>
-    <p class="text-[14px] text-gray-500 max-w-xl leading-relaxed mb-6">Backend systems, platform engineering, security-focused builds — if the problem is interesting and the stack is modern, I'm interested.</p>
-    <a href="mailto:contact@iangabrielsanchez.com" class="inline-block bg-accent text-white text-[11px] font-bold uppercase tracking-[.06em] px-6 py-3">
-      Get in Touch →
-    </a>
+  <div class="border-b-3 border-black bg-white">
+    <div class="px-10 py-12">
+      <p class="text-[10px] font-bold text-accent uppercase tracking-widest2 mb-4">Open to contracts</p>
+      <h2 class="text-[28px] font-black uppercase tracking-tight mb-4">Have a hard problem?</h2>
+      <p class="text-[14px] text-gray-500 max-w-xl leading-relaxed mb-6">Backend systems, platform engineering, security-focused builds — if the problem is interesting and the stack is modern, I'm interested.</p>
+      <a href="mailto:contact@iangabrielsanchez.com" class="inline-block bg-accent text-white text-[11px] font-bold uppercase tracking-[.06em] px-6 py-3">
+        Get in Touch →
+      </a>
+    </div>
   </div>
 
   </main>
 
   <!-- ── FOOTER ── -->
-  <footer class="bg-black border-t-3 border-black px-10 py-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
-    <a href="/" class="text-[13px] font-black text-white uppercase tracking-[.04em]">Ian Gabriel Sanchez</a>
-    <div class="flex gap-6">
-      <a href="https://github.com/iangabrielsanchez" class="text-[11px] text-white/60 uppercase tracking-[.06em] hover:text-white transition-colors">GitHub</a>
-      <a href="https://linkedin.com/in/iangabrielsanchez" class="text-[11px] text-white/60 uppercase tracking-[.06em] hover:text-white transition-colors">LinkedIn</a>
-      <a href="mailto:contact@iangabrielsanchez.com" class="text-[11px] text-white/60 uppercase tracking-[.06em] hover:text-white transition-colors">Email</a>
+  <footer class="bg-black border-t-3 border-black">
+    <div class="px-10 py-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+      <a href="/" class="text-[13px] font-black text-white uppercase tracking-[.04em]">Ian Gabriel Sanchez</a>
+      <div class="flex gap-6">
+        <a href="https://github.com/iangabrielsanchez" class="text-[11px] text-white/60 uppercase tracking-[.06em] hover:text-white transition-colors">GitHub</a>
+        <a href="https://linkedin.com/in/iangabrielsanchez" class="text-[11px] text-white/60 uppercase tracking-[.06em] hover:text-white transition-colors">LinkedIn</a>
+        <a href="mailto:contact@iangabrielsanchez.com" class="text-[11px] text-white/60 uppercase tracking-[.06em] hover:text-white transition-colors">Email</a>
+      </div>
+      <span class="text-[11px] text-white/40 tracking-[.04em]">© 2026 · Philippines</span>
     </div>
-    <span class="text-[11px] text-white/40 tracking-[.04em]">© 2026 · Philippines</span>
   </footer>
+
+  </div>
 
 </body>
 </html>

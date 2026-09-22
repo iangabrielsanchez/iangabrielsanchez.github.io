@@ -60,72 +60,113 @@
 </head>
 <body class="bg-white text-black font-sans min-h-screen flex flex-col">
 
+  <div class="max-w-[1400px] w-full mx-auto flex flex-col flex-1 bg-white">
+
   <!-- ── NAV ── -->
-  <nav class="sticky top-0 z-50 bg-white border-b-3 border-black flex items-center justify-between px-10 h-[52px]">
-    <a href="/" class="text-[13px] font-black uppercase tracking-[.04em]">Ian Gabriel Sanchez</a>
-    <ul class="hidden md:flex gap-7">
-      <li><a href="/about.html"    class="text-[11px] text-gray-500 uppercase tracking-[.08em] hover:text-black transition-colors">About</a></li>
-      <li><a href="/products.html" class="text-[11px] text-black font-bold uppercase tracking-[.08em] border-b-2 border-accent pb-0.5">Products</a></li>
-      <li><a href="/lab.html"      class="text-[11px] text-gray-500 uppercase tracking-[.08em] hover:text-black transition-colors">Lab</a></li>
-      <li><a href="/blog.html"    class="text-[11px] text-gray-500 uppercase tracking-[.08em] hover:text-black transition-colors">Blog</a></li>
-      <li><a href="/portfolio.html"     class="text-[11px] text-gray-500 uppercase tracking-[.08em] hover:text-black transition-colors">Portfolio</a></li>
-    </ul>
-    <a href="mailto:contact@iangabrielsanchez.com" class="bg-accent text-white text-[11px] font-bold uppercase tracking-[.06em] px-4 py-2 shrink-0 whitespace-nowrap">
-      <span class="hidden sm:inline">Available for Contract →</span>
-      <span class="sm:hidden">Contact →</span>
-    </a>
+  <nav class="sticky top-0 z-50 bg-white border-b-3 border-black h-[52px]">
+    <div class="h-full flex items-center justify-between px-10">
+      <a href="/" class="text-[13px] font-black uppercase tracking-[.04em]">Ian Gabriel Sanchez</a>
+      <ul class="hidden md:flex gap-7">
+        <li><a href="/about.html"    class="text-[11px] text-gray-500 uppercase tracking-[.08em] hover:text-black transition-colors">About</a></li>
+        <li><a href="/products.html" class="text-[11px] text-black font-bold uppercase tracking-[.08em] border-b-2 border-accent pb-0.5">Products</a></li>
+        <li><a href="/lab.html"      class="text-[11px] text-gray-500 uppercase tracking-[.08em] hover:text-black transition-colors">Lab</a></li>
+        <li><a href="/blog.html"    class="text-[11px] text-gray-500 uppercase tracking-[.08em] hover:text-black transition-colors">Blog</a></li>
+        <li><a href="/portfolio.html"     class="text-[11px] text-gray-500 uppercase tracking-[.08em] hover:text-black transition-colors">Portfolio</a></li>
+      </ul>
+      <a href="mailto:contact@iangabrielsanchez.com" class="bg-accent text-white text-[11px] font-bold uppercase tracking-[.06em] px-4 py-2 shrink-0 whitespace-nowrap">
+        <span class="hidden sm:inline">Available for Contract →</span>
+        <span class="sm:hidden">Contact →</span>
+      </a>
+    </div>
   </nav>
 
   <main class="flex-1">
 
   <!-- ── META BAR ── -->
-  <div class="border-b-3 border-black px-10 py-4 flex items-center gap-4 bg-white">
-    <a href="/products.html" class="text-[10px] font-bold uppercase tracking-[.08em] text-gray-400 hover:text-black transition-colors">← Products</a>
-    <span class="text-gray-300">|</span>
-    <span id="meta-status" class="text-[9px] font-bold uppercase tracking-[.12em]"></span>
-    <span id="meta-category" class="text-[10px] text-gray-400 tracking-[.04em]"></span>
+  <div class="border-b-3 border-black bg-white">
+    <div class="px-10 py-4 flex items-center gap-4">
+      <a href="/products.html" class="text-[10px] font-bold uppercase tracking-[.08em] text-gray-400 hover:text-black transition-colors">← Products</a>
+      <span class="text-gray-300">|</span>
+      <span id="meta-status" class="text-[9px] font-bold uppercase tracking-[.12em]"></span>
+      <span id="meta-category" class="text-[10px] text-gray-400 tracking-[.04em]"></span>
+    </div>
   </div>
 
   <!-- ── TABS ── -->
-  <div class="border-b-3 border-black flex">
-    <button id="tab-overview" onclick="showTab('overview')"
-      class="tab-btn px-8 py-4 text-[11px] font-bold uppercase tracking-[.08em] border-r-3 border-black bg-black text-white">
-      Overview
-    </button>
-    <button id="tab-changelog" onclick="showTab('changelog')"
-      class="tab-btn px-8 py-4 text-[11px] font-bold uppercase tracking-[.08em] border-r-3 border-black text-gray-500 hover:bg-black hover:text-white transition-colors">
-      Changelog
-    </button>
-  </div>
-
-  <!-- ── CONTENT PANELS ── -->
-  <div id="panel-overview" class="max-w-3xl px-10 py-14">
-    <div id="content-overview" class="prose">
-      <div class="text-[13px] text-gray-400">Loading…</div>
+  <div class="border-b-3 border-black">
+    <div class="flex">
+      <button id="tab-overview" onclick="showTab('overview')"
+        class="tab-btn px-8 py-4 text-[11px] font-bold uppercase tracking-[.08em] border-r-3 border-black bg-black text-white">
+        Overview
+      </button>
+      <button id="tab-changelog" onclick="showTab('changelog')"
+        class="tab-btn px-8 py-4 text-[11px] font-bold uppercase tracking-[.08em] border-r-3 border-black text-gray-500 hover:bg-black hover:text-white transition-colors">
+        Changelog
+      </button>
     </div>
   </div>
 
-  <div id="panel-changelog" class="max-w-3xl px-10 py-14 hidden">
-    <div id="content-changelog" class="prose">
-      <div class="text-[13px] text-gray-400">Loading…</div>
-    </div>
-  </div>
+  <!-- ── CONTENT + SIDEBAR ── -->
+  <div class="border-b-3 border-black">
+  <div class="grid grid-cols-1 md:grid-cols-[1fr_320px]">
 
-  <!-- ── USED BY ── -->
-  <div id="meta-client" class="hidden items-center gap-6 border-t-3 border-black px-10 py-10 bg-white"></div>
+    <!-- Left: article -->
+    <div class="border-r-3 border-black">
+      <div id="panel-overview" class="px-10 py-14">
+        <div id="content-overview" class="prose max-w-2xl">
+          <div class="text-[13px] text-gray-400">Loading…</div>
+        </div>
+      </div>
+
+      <div id="panel-changelog" class="px-10 py-14 hidden">
+        <div id="content-changelog" class="prose max-w-2xl">
+          <div class="text-[13px] text-gray-400">Loading…</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right: meta -->
+    <div class="flex flex-col divide-y-3 divide-black">
+      <div class="px-8 py-8">
+        <p class="text-[9px] font-bold text-accent uppercase tracking-widest2 mb-4">Status</p>
+        <p id="meta-status-2" class="text-[15px] font-black uppercase"></p>
+      </div>
+      <div class="px-8 py-8">
+        <p class="text-[9px] font-bold text-accent uppercase tracking-widest2 mb-4">Category</p>
+        <p id="meta-category-2" class="text-[13px] text-gray-600 font-semibold"></p>
+      </div>
+      <div id="tags-bar" class="hidden px-8 py-8">
+        <p class="text-[9px] font-bold text-accent uppercase tracking-widest2 mb-4">Tech Stack</p>
+        <div id="tags-list" class="flex flex-wrap gap-1.5"></div>
+      </div>
+      <div id="meta-client" class="hidden px-8 py-8 flex-col items-start gap-3"></div>
+      <div class="px-8 py-8">
+        <p class="text-[9px] font-bold text-accent uppercase tracking-widest2 mb-4">Interested?</p>
+        <a href="mailto:contact@iangabrielsanchez.com" class="inline-block bg-accent text-white text-[11px] font-bold uppercase tracking-[.06em] px-4 py-2 mt-2">
+          Get in Touch →
+        </a>
+      </div>
+    </div>
+
+  </div>
+  </div>
 
   </main>
 
   <!-- ── FOOTER ── -->
-  <footer class="bg-black border-t-3 border-black px-10 py-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
-    <a href="/" class="text-[13px] font-black text-white uppercase tracking-[.04em]">Ian Gabriel Sanchez</a>
-    <div class="flex gap-6">
-      <a href="https://github.com/iangabrielsanchez" class="text-[11px] text-white/60 uppercase tracking-[.06em] hover:text-white transition-colors">GitHub</a>
-      <a href="https://linkedin.com/in/iangabrielsanchez" class="text-[11px] text-white/60 uppercase tracking-[.06em] hover:text-white transition-colors">LinkedIn</a>
-      <a href="mailto:contact@iangabrielsanchez.com" class="text-[11px] text-white/60 uppercase tracking-[.06em] hover:text-white transition-colors">Email</a>
+  <footer class="bg-black border-t-3 border-black">
+    <div class="px-10 py-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+      <a href="/" class="text-[13px] font-black text-white uppercase tracking-[.04em]">Ian Gabriel Sanchez</a>
+      <div class="flex gap-6">
+        <a href="https://github.com/iangabrielsanchez" class="text-[11px] text-white/60 uppercase tracking-[.06em] hover:text-white transition-colors">GitHub</a>
+        <a href="https://linkedin.com/in/iangabrielsanchez" class="text-[11px] text-white/60 uppercase tracking-[.06em] hover:text-white transition-colors">LinkedIn</a>
+        <a href="mailto:contact@iangabrielsanchez.com" class="text-[11px] text-white/60 uppercase tracking-[.06em] hover:text-white transition-colors">Email</a>
+      </div>
+      <span class="text-[11px] text-white/40 tracking-[.04em]">© 2026 · Philippines</span>
     </div>
-    <span class="text-[11px] text-white/40 tracking-[.04em]">© 2026 · Philippines</span>
   </footer>
+
+  </div>
 
   <script>
     function showTab(name) {
@@ -183,13 +224,26 @@
           statusEl.classList.add(meta.status === 'Live' ? 'text-accent' : 'text-black');
           document.getElementById('meta-category').textContent = `${meta.category} · ${meta.year}`;
 
+          const statusEl2 = document.getElementById('meta-status-2');
+          statusEl2.textContent = meta.status;
+          statusEl2.classList.add(meta.status === 'Live' ? 'text-accent' : 'text-black');
+          document.getElementById('meta-category-2').textContent = `${meta.category} · ${meta.year}`;
+
+          if (meta.tags && meta.tags.length) {
+            const tagsBar = document.getElementById('tags-bar');
+            tagsBar.classList.remove('hidden');
+            document.getElementById('tags-list').innerHTML = meta.tags.map(t =>
+              `<span class="text-[10px] text-gray-600 border border-gray-300 px-2.5 py-1 tracking-[.04em]">${t}</span>`
+            ).join('');
+          }
+
           if (meta.client) {
             const clientEl = document.getElementById('meta-client');
             clientEl.classList.remove('hidden');
             clientEl.classList.add('flex');
-            const logoImg = `<img src="${meta.client.logo}" alt="${meta.client.name}" class="h-16 w-auto [filter:drop-shadow(0_0_0.5px_rgba(0,0,0,0.35))_drop-shadow(0_0_0.5px_rgba(0,0,0,0.35))]">`;
+            const logoImg = `<img src="${meta.client.logo}" alt="${meta.client.name}" class="h-12 w-auto [filter:drop-shadow(0_0_0.5px_rgba(0,0,0,0.35))_drop-shadow(0_0_0.5px_rgba(0,0,0,0.35))]">`;
             clientEl.innerHTML = `
-              <span class="text-[9px] font-bold text-gray-400 uppercase tracking-widest2">Used By</span>
+              <p class="text-[9px] font-bold text-accent uppercase tracking-widest2">Used By</p>
               ${meta.client.url
                 ? `<a href="${meta.client.url}" target="_blank" rel="noopener" class="hover:opacity-70 transition-opacity">${logoImg}</a>`
                 : logoImg}
