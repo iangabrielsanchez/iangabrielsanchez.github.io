@@ -1,0 +1,75 @@
+---
+import Base from '../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+
+const projects = (await getCollection('projects'))
+  .filter((p) => !p.data.draft)
+  .sort((a, b) => b.data.date.localeCompare(a.data.date));
+---
+
+<Base
+  title="Portfolio — Ian Gabriel Sanchez"
+  description="Selected engineering projects by Ian Gabriel Sanchez — side projects, open source contributions, and client work."
+  canonical="/portfolio"
+  active="portfolio"
+>
+  <!-- ── PAGE HEADER ── -->
+  <div class="border-b-3 border-black bg-white">
+    <div class="px-10 pt-14 pb-10">
+      <p class="text-[10px] font-bold text-accent uppercase tracking-widest2 mb-3">Selected Work</p>
+      <h1 class="text-[clamp(48px,6vw,72px)] font-black uppercase leading-none tracking-[-0.03em]">Portfolio</h1>
+    </div>
+  </div>
+
+  <!-- ── PROJECT LIST ── -->
+  <div class="border-b-3 border-black">
+    {projects.length === 0 ? (
+      <div class="px-10 py-16 md:py-24 max-w-2xl">
+        <p class="text-[10px] font-bold text-accent uppercase tracking-widest2 mb-5">Coming Soon</p>
+        <h2 class="text-[clamp(32px,4vw,52px)] font-black uppercase leading-none tracking-[-0.02em] mb-6">
+          Hold on.<br />Something good<br />is in the works.
+        </h2>
+        <p class="text-[14px] text-gray-500 leading-relaxed max-w-md mb-8">
+          A curated set of projects — things built from scratch, problems solved at scale, and work worth showing. Being assembled now.
+        </p>
+        <a
+          href="/products"
+          class="inline-block bg-black text-white text-[11px] font-bold uppercase tracking-[.06em] px-6 py-3 hover:bg-accent transition-colors"
+        >
+          See products I've shipped →
+        </a>
+      </div>
+    ) : (
+      projects.map((entry) => {
+        const p = entry.data;
+        return (
+          <a
+            href={`/portfolio/${entry.id}`}
+            class="flex flex-col md:flex-row md:items-start gap-4 md:gap-10 px-10 py-10 border-b-3 border-black last:border-b-0 hover:bg-black hover:text-white transition-colors group"
+          >
+            <div class="flex-shrink-0 w-28">
+              <p class="text-[10px] font-bold text-gray-400 group-hover:text-white/50 uppercase tracking-[.08em]">{p.date}</p>
+              <span class="inline-block mt-2 text-[9px] font-bold uppercase tracking-[.12em] bg-black group-hover:bg-white text-white group-hover:text-black px-2.5 py-1">
+                {p.category}
+              </span>
+            </div>
+            <div class="flex-1">
+              <h2 class="text-[18px] font-black uppercase tracking-[.01em] leading-snug mb-2">{p.title}</h2>
+              <p class="text-[13px] text-gray-500 group-hover:text-white/70 leading-relaxed">{p.description}</p>
+              {p.tags && p.tags.length > 0 && (
+                <div class="flex flex-wrap gap-2 mt-4">
+                  {p.tags.map((tag: string) => (
+                    <span class="text-[9px] font-bold uppercase tracking-[.1em] border border-gray-300 group-hover:border-white/30 text-gray-400 group-hover:text-white/60 px-2 py-0.5">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              )}
+            </div>
+            <span class="hidden md:block text-[18px] font-black group-hover:translate-x-1 transition-transform mt-1">→</span>
+          </a>
+        );
+      })
+    )}
+  </div>
+</Base>

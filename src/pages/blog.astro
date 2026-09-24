@@ -45,7 +45,21 @@ const pillOff = 'bg-white text-gray-600 border-gray-300 hover:border-black hover
   <div class="border-b-3 border-black">
     <div id="notes-list">
       {posts.length === 0 ? (
-        <div class="px-10 py-8 text-[13px] text-gray-400">Nothing published yet — check back soon.</div>
+        <div class="px-10 py-16 md:py-24 max-w-2xl">
+          <p class="text-[10px] font-bold text-accent uppercase tracking-widest2 mb-5">Coming Soon</p>
+          <h2 class="text-[clamp(32px,4vw,52px)] font-black uppercase leading-none tracking-[-0.02em] mb-6">
+            Hold on.<br />Something good<br />is in the works.
+          </h2>
+          <p class="text-[14px] text-gray-500 leading-relaxed max-w-md mb-8">
+            Writing on distributed systems, backend architecture, and the unglamorous details that actually matter in production. First posts are coming.
+          </p>
+          <a
+            href="mailto:contact@iangabrielsanchez.com?subject=Blog%20notification"
+            class="inline-block bg-black text-white text-[11px] font-bold uppercase tracking-[.06em] px-6 py-3 hover:bg-accent transition-colors"
+          >
+            Notify me when it's live →
+          </a>
+        </div>
       ) : (
         posts.map((entry) => (
           <a
