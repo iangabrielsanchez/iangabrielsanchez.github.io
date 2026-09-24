@@ -1,0 +1,114 @@
+---
+import Base from '../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('posts')).filter((p) => !p.data.draft);
+const categories = [...new Set(posts.map((p) => p.data.category))].sort();
+
+function badgeClass(cat: string) {
+  if (cat === 'Security') return 'inline-block text-[9px] font-bold uppercase tracking-[.12em] bg-accent text-white px-2.5 py-1';
+  if (cat === 'Backend') return 'inline-block text-[9px] font-bold uppercase tracking-[.12em] bg-black group-hover:bg-white text-white group-hover:text-black px-2.5 py-1';
+  return 'inline-block text-[9px] font-bold uppercase tracking-[.12em] border border-gray-400 group-hover:border-white/40 text-gray-500 group-hover:text-white/70 px-2.5 py-1';
+}
+
+const pillBase = 'filter-pill text-[10px] font-bold uppercase tracking-[.08em] px-3 py-1.5 border transition-colors';
+const pillOn = 'bg-black text-white border-black';
+const pillOff = 'bg-white text-gray-600 border-gray-300 hover:border-black hover:text-black';
+---
+
+<Base
+  title="Blog — Ian Gabriel Sanchez"
+  description="Writing on backend engineering, infrastructure, and security by Ian Gabriel Sanchez."
+  canonical="/blog"
+  active="blog"
+>
+  <!-- ── PAGE HEADER ── -->
+  <div class="border-b-3 border-black bg-white">
+    <div class="px-10 pt-14 pb-10">
+      <p class="text-[10px] font-bold text-accent uppercase tracking-widest2 mb-3">Writing</p>
+      <h1 class="text-[clamp(48px,6vw,72px)] font-black uppercase leading-none tracking-[-0.03em]">Blog</h1>
+    </div>
+  </div>
+
+  <!-- ── FILTER BAR ── -->
+  <div class="border-b-3 border-black bg-white">
+    <div id="filter-bar" class="px-10 py-5 flex flex-wrap items-center gap-2">
+      <button data-filter="" class={`${pillBase} ${pillOn}`}>All</button>
+      <span class="w-px h-4 bg-gray-300 mx-1"></span>
+      {categories.map((c) => (
+        <button data-filter={c} class={`${pillBase} ${pillOff}`}>{c}</button>
+      ))}
+    </div>
+  </div>
+
+  <!-- ── NOTE LIST ── -->
+  <div class="border-b-3 border-black">
+    <div id="notes-list">
+      {posts.length === 0 ? (
+        <div class="px-10 py-8 text-[13px] text-gray-400">Nothing published yet — check back soon.</div>
+      ) : (
+        posts.map((entry) => (
+          <a
+            href={`/post/${entry.id}`}
+            data-category={entry.data.category}
+            class="post-row flex flex-col md:flex-row md:items-start gap-4 md:gap-10 px-10 py-8 border-b-3 border-black hover:bg-black hover:text-white transition-colors group"
+          >
+            <div class="flex-shrink-0 w-28">
+              <span class={badgeClass(entry.data.category)}>{entry.data.category}</span>
+              <p class="text-[10px] text-gray-400 group-hover:text-white/50 mt-3 tracking-[.04em]">{entry.data.date}</p>
+            </div>
+            <div class="flex-1">
+              <h2 class="text-[18px] font-black uppercase tracking-[.01em] leading-snug mb-2">{entry.data.title}</h2>
+              <p class="text-[13px] text-gray-500 group-hover:text-white/70 leading-relaxed">{entry.data.description}</p>
+            </div>
+            <span class="hidden md:block text-[18px] font-black group-hover:translate-x-1 transition-transform mt-1">→</span>
+          </a>
+        ))
+      )}
+      <div id="no-match" class="px-10 py-8 text-[13px] text-gray-400 hidden">No posts match this filter.</div>
+    </div>
+  </div>
+</Base>
+
+<script is:inline>
+  (function () {
+    var ON = ['bg-black', 'text-white', 'border-black'];
+    var OFF = ['bg-white', 'text-gray-600', 'border-gray-300', 'hover:border-black', 'hover:text-black'];
+    var pills = Array.prototype.slice.call(document.querySelectorAll('#filter-bar .filter-pill'));
+    var rows = Array.prototype.slice.call(document.querySelectorAll('.post-row'));
+    var noMatch = document.getElementById('no-match');
+
+    function apply(filter, push) {
+      pills.forEach(function (b) {
+        var on = (b.dataset.filter || null) === filter;
+        b.classList.remove.apply(b.classList, on ? OFF : ON);
+        b.classList.add.apply(b.classList, on ? ON : OFF);
+      });
+
+      var shown = [];
+      rows.forEach(function (r) {
+        var vis = !filter || r.dataset.category === filter;
+        r.classList.toggle('hidden', !vis);
+        if (vis) shown.push(r);
+      });
+
+      // Only the last visible row should lose its divider.
+      rows.forEach(function (r) { r.classList.add('border-b-3'); });
+      if (shown.length) shown[shown.length - 1].classList.remove('border-b-3');
+      if (noMatch) noMatch.classList.toggle('hidden', !(rows.length && shown.length === 0));
+
+      if (push) {
+        var url = new URL(location);
+        if (filter) url.searchParams.set('filter', filter);
+        else url.searchParams.delete('filter');
+        history.replaceState(null, '', url);
+      }
+    }
+
+    pills.forEach(function (b) {
+      b.addEventListener('click', function () { apply(b.dataset.filter || null, true); });
+    });
+
+    apply(new URLSearchParams(location.search).get('filter') || null, false);
+  })();
+</script>

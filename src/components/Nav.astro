@@ -1,0 +1,36 @@
+---
+interface Props {
+  active?: 'about' | 'products' | 'lab' | 'blog' | 'portfolio';
+}
+const { active } = Astro.props;
+
+const links = [
+  { key: 'about', label: 'About', href: '/about.html' },
+  { key: 'products', label: 'Products', href: '/products.html' },
+  { key: 'lab', label: 'Lab', href: '/lab.html' },
+  { key: 'blog', label: 'Blog', href: '/blog.html' },
+  { key: 'portfolio', label: 'Portfolio', href: '/portfolio.html' },
+] as const;
+
+const base = 'text-[11px] uppercase tracking-[.08em]';
+const on = `${base} text-black font-bold border-b-2 border-accent pb-0.5`;
+const off = `${base} text-gray-500 hover:text-black transition-colors`;
+---
+
+<nav class="sticky top-0 z-50 bg-white border-b-3 border-black h-[52px]">
+  <div class="h-full flex items-center justify-between px-10">
+    <a href="/" class="text-[13px] font-black uppercase tracking-[.04em]">Ian Gabriel Sanchez</a>
+    <ul class="hidden md:flex gap-7">
+      {links.map((l) => (
+        <li><a href={l.href} class={active === l.key ? on : off}>{l.label}</a></li>
+      ))}
+    </ul>
+    <a
+      href="mailto:contact@iangabrielsanchez.com"
+      class="bg-accent text-white text-[11px] font-bold uppercase tracking-[.06em] px-4 py-2 shrink-0 whitespace-nowrap"
+    >
+      <span class="hidden sm:inline">Available for Contract →</span>
+      <span class="sm:hidden">Contact →</span>
+    </a>
+  </div>
+</nav>

@@ -1,0 +1,243 @@
+---
+import Base from '../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+
+const products = await getCollection('products');
+const projects = (await getCollection('projects')).filter((p) => !p.data.draft);
+const posts = (await getCollection('posts')).filter((p) => !p.data.draft);
+
+const featuredProducts = products.slice(0, 2);
+const featuredProjects = projects.slice(0, 3);
+const featuredPosts = posts.slice(0, 3);
+
+// Border classes for a 3-up grid, matching the old cardBorder3() helper.
+function cardBorder3(i: number, total: number) {
+  const col = i % 3;
+  const isLastRow = i >= total - (total % 3 || 3);
+  return [col < 2 ? 'border-r-3 border-r-black' : '', !isLastRow ? 'border-b-3 border-b-black' : '']
+    .filter(Boolean)
+    .join(' ');
+}
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Ian Gabriel Sanchez',
+  jobTitle: 'Software Engineer',
+  url: 'https://iangabrielsanchez.com',
+  sameAs: ['https://github.com/iangabrielsanchez', 'https://linkedin.com/in/iangabrielsanchez'],
+  knowsAbout: ['Backend Development', 'Cloud Infrastructure', 'Application Security'],
+  address: { '@type': 'PostalAddress', addressCountry: 'PH' },
+};
+---
+
+<Base
+  title="Ian Gabriel Sanchez — Software Engineer"
+  description="Software Engineer based in the Philippines. 9+ years building backend systems, cloud infrastructure, and secure APIs for production environments."
+  canonical="/"
+>
+  <script slot="head" type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd)} />
+
+  <!-- ── HERO ── -->
+  <section id="about" class="bg-white border-b-3 border-black">
+    <div class="px-10 pt-[72px] pb-14">
+    <h1 class="text-[clamp(48px,7vw,80px)] font-black uppercase leading-[.92] tracking-[-0.035em] max-w-5xl">
+      Building Backends<br>
+      That<span class="text-accent"> Scale.</span>
+    </h1>
+    <div class="flex flex-col md:flex-row justify-between items-start md:items-end mt-9 gap-8">
+      <p class="text-[15px] text-gray-500 max-w-xl leading-relaxed">
+        Software Engineer based in the <strong class="text-black font-semibold">Philippines</strong>.
+        9+ years delivering event-driven systems, cloud infrastructure, and secure APIs for production environments.<br><br>
+        TypeScript · NestJS · PostgreSQL · AWS CDK · Kafka · Docker · Spring Boot
+      </p>
+      <div class="flex gap-2 shrink-0">
+        <a href="/portfolio.html" class="bg-accent text-white text-[12px] font-bold uppercase tracking-[.08em] px-6 py-3">
+          View Work →
+        </a>
+        <a href="/lab.html" class="border-3 border-black text-black text-[12px] font-bold uppercase tracking-[.08em] px-6 py-3">
+          Explore the Lab
+        </a>
+      </div>
+    </div>
+    </div>
+  </section>
+
+  <!-- ── STATS BAR ── -->
+  <div class="bg-black border-b-3 border-black">
+  <div class="grid grid-cols-2 md:grid-cols-5">
+    <div class="border-r border-white/10 px-5 md:px-10 py-7 min-w-0">
+      <div class="text-[40px] font-black text-white leading-none tracking-tight">9+</div>
+      <div class="text-[10px] text-white/70 uppercase tracking-[.12em] mt-1">Years Experience</div>
+    </div>
+    <div class="border-r border-white/10 px-5 md:px-10 py-7 min-w-0">
+      <div class="text-[40px] font-black text-white leading-none tracking-tight">{products.length}</div>
+      <div class="text-[10px] text-white/70 uppercase tracking-[.12em] mt-1">Personally Built &amp; Shipped</div>
+    </div>
+    <div class="border-r border-white/10 px-5 md:px-10 py-7 min-w-0">
+      <div class="text-[40px] font-black text-white leading-none tracking-tight">BS</div>
+      <div class="text-[10px] text-white/70 uppercase tracking-[.12em] mt-1">Computer Science</div>
+    </div>
+    <div class="border-r border-white/10 bg-accent px-5 md:px-10 py-7 min-w-0">
+      <div class="text-[40px] font-black text-white leading-none tracking-tight">CWPT</div>
+      <div class="flex flex-wrap items-center gap-2 mt-1">
+        <div class="text-[10px] text-white/70 uppercase tracking-[.12em]">Web Pentest Certified</div>
+        <a href="https://appkademiya.online/verify/CERT-CERTIFIED-WEB-PENETRATION-TESTER-CWPT-20260915-A544838AB4D5" target="_blank" rel="noopener" class="text-[9px] font-bold text-white uppercase tracking-[.08em] border border-white/40 px-2 py-1 hover:bg-white hover:text-accent transition-colors shrink-0">
+          Verify →
+        </a>
+      </div>
+    </div>
+    <div class="px-5 md:px-10 py-7 min-w-0">
+      <div class="text-[40px] font-black text-white leading-none tracking-tight">PSM</div>
+      <div class="text-[10px] text-white/70 uppercase tracking-[.12em] mt-1">Cybersecurity · In Progress</div>
+    </div>
+  </div>
+  </div>
+
+  <!-- ── PRODUCTS ── -->
+  {featuredProducts.length > 0 && (
+  <section id="products-section" class="bg-white">
+    <div class="px-10 pt-16 pb-0">
+    <p class="text-[10px] font-bold text-accent uppercase tracking-widest2 mb-3">Personally Built & Shipped</p>
+    <h2 class="text-[32px] font-black uppercase tracking-tight border-b-3 border-black pb-5 mb-0 inline-block">Products</h2>
+
+    <div id="products-grid" class="grid grid-cols-1 md:grid-cols-2 border-t-3 border-black mt-10">
+      {featuredProducts.map((entry, i) => {
+        const p = entry.data;
+        return (
+          <a href={`/product/${entry.id}`} class={`${i === 0 ? 'border-r-3 border-black' : ''} border-b-3 border-black p-10 hover:bg-black transition-colors group`}>
+            <div class="flex items-center gap-3 mb-4">
+              {p.status === 'Live' ? (
+                <span class="inline-block text-[9px] font-bold uppercase tracking-[.12em] bg-accent text-white px-2.5 py-1">Live</span>
+              ) : (
+                <span class="inline-block text-[9px] font-bold uppercase tracking-[.12em] border border-black group-hover:border-white text-black group-hover:text-white px-2.5 py-1">{p.status}</span>
+              )}
+              <p class="text-[9px] font-bold text-gray-400 group-hover:text-white/50 uppercase tracking-[.08em]">{p.category} · {p.year}</p>
+            </div>
+            <h3 class="text-[17px] font-black uppercase tracking-[.01em] leading-tight mb-3 group-hover:text-white">{p.name}</h3>
+            <p class="text-[13px] text-gray-500 group-hover:text-white/70 leading-relaxed mb-4">{p.description}</p>
+            <div class="flex flex-wrap gap-1.5">
+              {p.tags.map((t) => (
+                <span class="text-[10px] text-gray-600 group-hover:text-white/60 border border-gray-300 group-hover:border-white/30 px-2.5 py-1 tracking-[.04em]">{t}</span>
+              ))}
+            </div>
+          </a>
+        );
+      })}
+    </div>
+    </div>
+
+    <a href="/products.html" class="block border-t-3 border-black">
+      <div class="px-10 py-5 flex items-center justify-between hover:bg-black hover:text-white transition-colors group">
+        <span id="products-cta" class="text-[11px] font-bold uppercase tracking-[.1em]">View all {products.length} product{products.length === 1 ? '' : 's'}</span>
+        <span class="text-[11px] font-bold group-hover:translate-x-1 transition-transform">→</span>
+      </div>
+    </a>
+  </section>
+  )}
+
+  <!-- ── WORK ── -->
+  {featuredProjects.length > 0 && (
+  <section id="work-section" class="bg-white">
+    <div class="px-10 pt-16 pb-0">
+    <p class="text-[10px] font-bold text-accent uppercase tracking-widest2 mb-3">Selected Work</p>
+    <h2 class="text-[32px] font-black uppercase tracking-tight border-b-3 border-black pb-5 mb-0 inline-block">Portfolio</h2>
+
+    <div id="work-grid" class="grid grid-cols-1 md:grid-cols-3 border-t-3 border-black mt-10">
+      {featuredProjects.map((entry, i) => (
+        <a href={`/portfolio/${entry.id}`} class={`${cardBorder3(i, featuredProjects.length)} p-10 hover:bg-black transition-colors group`}>
+          <p class="text-[9px] font-bold text-accent uppercase tracking-widest2 mb-3">{entry.data.category} · {entry.data.date}</p>
+          <h3 class="text-[17px] font-black uppercase tracking-[.01em] leading-tight mb-3 group-hover:text-white">{entry.data.title}</h3>
+          <p class="text-[13px] text-gray-500 group-hover:text-white/70 leading-relaxed mb-4">{entry.data.description}</p>
+          <div class="flex flex-wrap gap-1.5">
+            {entry.data.tags.map((t) => (
+              <span class="text-[10px] text-gray-600 group-hover:text-white/60 border border-gray-300 group-hover:border-white/30 px-2.5 py-1 tracking-[.04em]">{t}</span>
+            ))}
+          </div>
+        </a>
+      ))}
+    </div>
+    </div>
+
+    <a href="/portfolio.html" class="block border-t-3 border-black">
+      <div class="px-10 py-5 flex items-center justify-between hover:bg-black hover:text-white transition-colors group">
+        <span id="work-cta" class="text-[11px] font-bold uppercase tracking-[.1em]">View all {projects.length} portfolio item{projects.length === 1 ? '' : 's'}</span>
+        <span class="text-[11px] font-bold group-hover:translate-x-1 transition-transform">→</span>
+      </div>
+    </a>
+  </section>
+  )}
+
+  <!-- ── LAB ── -->
+  <section class="bg-black border-t-3 border-b-3 border-black">
+    <div class="px-10 pt-16 pb-0">
+    <p class="text-[10px] font-bold text-accent uppercase tracking-widest2 mb-3">Infrastructure</p>
+    <h2 class="text-[32px] font-black uppercase tracking-tight text-white border-b-3 border-white pb-5 mb-0 inline-block">The Lab</h2>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 border-t-3 border-white/10 mt-10">
+
+      <div class="border-r border-white/10 border-b-3 border-b-black p-10">
+        <h3 class="text-[18px] font-black text-white uppercase mb-2">Proxmox Cluster</h3>
+        <p class="text-[10px] text-accent uppercase tracking-[.1em] mb-4">2-Node Cluster & QDevice · Self-Hosted</p>
+        <p class="text-[13px] text-white/70 leading-relaxed mb-4">Two Mac Mini 2012s run 24/7 as the cluster's dev, CI, and media tier. An AMD Ryzen 5600 joins on demand for extra compute or remote gaming, with the Pi standing in as a quorum device — all mesh-networked over Tailscale.</p>
+        <div class="flex flex-wrap gap-1.5">
+          <span class="text-[10px] text-white/60 border border-white/20 px-2.5 py-1">Proxmox VE</span>
+          <span class="text-[10px] text-white/60 border border-white/20 px-2.5 py-1">Tailscale</span>
+          <span class="text-[10px] text-white/60 border border-white/20 px-2.5 py-1">GitHub Actions Runner</span>
+          <span class="text-[10px] text-white/60 border border-white/20 px-2.5 py-1">Jellyfin</span>
+          <span class="text-[10px] text-white/60 border border-white/20 px-2.5 py-1">Apollo / Artemis</span>
+        </div>
+      </div>
+
+      <div class="border-b-3 border-b-black p-10">
+        <h3 class="text-[18px] font-black text-white uppercase mb-2">Raspberry Pi</h3>
+        <p class="text-[10px] text-accent uppercase tracking-[.1em] mb-4">NAS, Networking & Home Automation</p>
+        <p class="text-[13px] text-white/70 leading-relaxed mb-4">Always-on Pi running a DIY NAS, network-level ad blocking, and home automation, alongside the reverse proxy and container stack for the rest of the homelab.</p>
+        <div class="flex flex-wrap gap-1.5">
+          <span class="text-[10px] text-white/60 border border-white/20 px-2.5 py-1">OpenMediaVault</span>
+          <span class="text-[10px] text-white/60 border border-white/20 px-2.5 py-1">Pi-hole</span>
+          <span class="text-[10px] text-white/60 border border-white/20 px-2.5 py-1">Nginx Proxy Manager</span>
+          <span class="text-[10px] text-white/60 border border-white/20 px-2.5 py-1">Portainer</span>
+          <span class="text-[10px] text-white/60 border border-white/20 px-2.5 py-1">Home Assistant</span>
+          <span class="text-[10px] text-white/60 border border-white/20 px-2.5 py-1">Transmission</span>
+        </div>
+      </div>
+
+    </div>
+    </div>
+    <a href="/lab.html" class="block border-t-3 border-white/20">
+      <div class="px-10 py-5 flex items-center justify-between hover:bg-white hover:text-black transition-colors group">
+        <span class="text-[11px] font-bold uppercase tracking-[.1em] text-white group-hover:text-black">Explore the full lab</span>
+        <span class="text-[11px] font-bold text-white group-hover:text-black group-hover:translate-x-1 transition-transform">→</span>
+      </div>
+    </a>
+  </section>
+
+  <!-- ── BLOG ── -->
+  {featuredPosts.length > 0 && (
+  <section id="blog-section" class="bg-white">
+    <div class="px-10 pt-16 pb-0">
+    <p class="text-[10px] font-bold text-accent uppercase tracking-widest2 mb-3">Writing</p>
+    <h2 class="text-[32px] font-black uppercase tracking-tight border-b-3 border-black pb-5 mb-0 inline-block">Blog</h2>
+
+    <div id="blog-grid" class="grid grid-cols-1 md:grid-cols-3 border-t-3 border-black mt-10">
+      {featuredPosts.map((entry, i) => (
+        <div class={`${cardBorder3(i, featuredPosts.length)} p-8`}>
+          <span class="inline-block text-[9px] font-bold uppercase tracking-[.12em] bg-black text-white px-2.5 py-1 mb-4">{entry.data.category}</span>
+          <h4 class="text-[15px] font-black uppercase tracking-[.01em] leading-snug mb-2">{entry.data.title}</h4>
+          <p class="text-[12px] text-gray-500 leading-relaxed">{entry.data.description}</p>
+          <p class="text-[10px] text-gray-400 mt-4 tracking-[.04em]">{entry.data.date}</p>
+        </div>
+      ))}
+    </div>
+    </div>
+
+    <a href="/blog.html" class="block border-t-3 border-black">
+      <div class="px-10 py-5 flex items-center justify-between hover:bg-black hover:text-white transition-colors group">
+        <span class="text-[11px] font-bold uppercase tracking-[.1em]">Read all posts</span>
+        <span class="text-[11px] font-bold group-hover:translate-x-1 transition-transform">→</span>
+      </div>
+    </a>
+  </section>
+  )}
+</Base>

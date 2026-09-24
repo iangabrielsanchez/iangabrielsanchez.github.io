@@ -1,0 +1,98 @@
+---
+import Base from '../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+
+const products = await getCollection('products');
+---
+
+<Base
+  title="Products — Ian Gabriel Sanchez"
+  description="Products personally built and shipped by Ian Gabriel Sanchez — point-of-sale platforms, internal tools, and white-labeled software for real businesses."
+  canonical="/products.html"
+  active="products"
+>
+  <!-- ── PAGE HEADER ── -->
+  <div class="border-b-3 border-black bg-white">
+    <div class="px-10 pt-14 pb-10">
+      <p class="text-[10px] font-bold text-accent uppercase tracking-widest2 mb-3">Personally Built &amp; Shipped</p>
+      <h1 class="text-[clamp(48px,6vw,72px)] font-black uppercase leading-none tracking-[-0.03em]">Products</h1>
+    </div>
+  </div>
+
+  <!-- ── PRODUCT LIST ── -->
+  <div class="border-b-3 border-black">
+    {products.map((entry) => {
+      const p = entry.data;
+      return (
+        <div class="border-b-3 border-black group hover:bg-black transition-colors">
+          <div class="grid grid-cols-1 md:grid-cols-[1fr_280px]">
+            <a href={`/product/${entry.id}`} class="block border-r-3 border-black group-hover:border-white/20 px-10 py-10">
+              <div class="flex items-center gap-3 mb-4">
+                {p.status === 'Live' ? (
+                  <span class="inline-block text-[9px] font-bold uppercase tracking-[.12em] bg-accent text-white px-2.5 py-1">Live</span>
+                ) : (
+                  <span class="inline-block text-[9px] font-bold uppercase tracking-[.12em] border border-black group-hover:border-white text-black group-hover:text-white px-2.5 py-1">{p.status}</span>
+                )}
+                <p class="text-[9px] font-bold text-gray-400 group-hover:text-white/50 uppercase tracking-[.08em]">{p.category} · {p.year}</p>
+              </div>
+              <h2 class="text-[22px] font-black uppercase tracking-[.01em] leading-tight mb-3 group-hover:text-white">{p.name}</h2>
+              <p class="text-[14px] text-gray-500 group-hover:text-white/70 leading-relaxed max-w-xl mb-6">{p.description}</p>
+              {p.client && (
+                <div class="flex items-center gap-4 mb-6">
+                  <p class="text-[9px] font-bold text-gray-400 group-hover:text-white/50 uppercase tracking-widest2">Used By</p>
+                  <img
+                    src={p.client.logo}
+                    alt={p.client.name}
+                    class="h-12 w-auto [filter:drop-shadow(0_0_0.5px_rgba(0,0,0,0.35))_drop-shadow(0_0_0.5px_rgba(0,0,0,0.35))] group-hover:filter-none"
+                  />
+                </div>
+              )}
+              <div class="flex flex-wrap gap-1.5">
+                {p.tags.map((t) => (
+                  <span class="text-[10px] text-gray-600 group-hover:text-white/60 border border-gray-300 group-hover:border-white/30 px-2.5 py-1 tracking-[.04em]">{t}</span>
+                ))}
+              </div>
+            </a>
+            <div class="px-8 py-10 flex flex-col justify-between">
+              <div>
+                <p class="text-[9px] font-bold text-black group-hover:text-white/50 uppercase tracking-widest2 mb-4">Changelog</p>
+                <div class="space-y-4">
+                  {p.changelog.slice(0, 3).map((c) => (
+                    <div>
+                      <p class="text-[11px] font-bold uppercase tracking-[.04em] group-hover:text-white">{c.version}</p>
+                      <p class="text-[11px] text-gray-500 group-hover:text-white/60 mt-0.5">{c.summary}</p>
+                      <p class="text-[10px] text-gray-400 group-hover:text-white/40 mt-0.5">{c.date}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <a
+                href={`/product/${entry.id}?tab=changelog`}
+                class="inline-block border-3 border-black group-hover:border-white text-[11px] font-bold uppercase tracking-[.06em] px-4 py-2 mt-6 group-hover:text-white hover:bg-white hover:!text-black transition-colors text-center"
+              >
+                Full Changelog →
+              </a>
+            </div>
+          </div>
+        </div>
+      );
+    })}
+
+    <div class="px-10 py-8 bg-gray-50">
+      <p class="text-[10px] font-bold text-gray-400 uppercase tracking-widest2 mb-2">In Progress</p>
+      <p class="text-[14px] text-gray-400">More products in the pipeline. Building in public when they're ready to show.</p>
+    </div>
+  </div>
+
+  <!-- ── CTA ── -->
+  <div class="border-b-3 border-black bg-white">
+    <div class="px-10 py-12">
+      <p class="text-[10px] font-bold text-accent uppercase tracking-widest2 mb-4">Open to contracts</p>
+      <h2 class="text-[28px] font-black uppercase tracking-tight mb-4">Need something custom built?</h2>
+      <p class="text-[14px] text-gray-500 max-w-xl leading-relaxed mb-6">If a product like this is close to what your business needs — a POS, an internal tool, a white-labeled platform — I can build it from scratch or adapt one of these. Let's talk about what you're trying to solve.</p>
+      <a href="mailto:contact@iangabrielsanchez.com" class="inline-block bg-accent text-white text-[11px] font-bold uppercase tracking-[.06em] px-6 py-3">
+        Get in Touch →
+      </a>
+    </div>
+  </div>
+</Base>

@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build:css": "tailwindcss -i ./src/input.css -o ./styles.css --minify",
-    "watch:css": "tailwindcss -i ./src/input.css -o ./styles.css --watch"
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
   },
   "repository": {
     "type": "git",
@@ -19,6 +20,8 @@
   },
   "homepage": "https://github.com/iangabrielsanchez/iangabrielsanchez.github.io#readme",
   "devDependencies": {
+    "@astrojs/sitemap": "^3.7.4",
+    "astro": "^7.3.4",
     "tailwindcss": "^3.4.19"
   }
 }

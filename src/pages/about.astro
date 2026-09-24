@@ -1,54 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
-  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16.png">
-  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
-  <title>About — Ian Gabriel Sanchez</title>
-  <meta name="description" content="Background, certifications, and stack of Ian Gabriel Sanchez — a backend-focused software engineer specializing in distributed systems, cloud infrastructure, and application security.">
-  <link rel="canonical" href="https://iangabrielsanchez.com/about">
+---
+import Base from '../layouts/Base.astro';
+---
 
-  <meta property="og:type" content="profile">
-  <meta property="og:url" content="https://iangabrielsanchez.com/about">
-  <meta property="og:title" content="About — Ian Gabriel Sanchez">
-  <meta property="og:description" content="Background, certifications, and stack of Ian Gabriel Sanchez — a backend-focused software engineer specializing in distributed systems, cloud infrastructure, and application security.">
-  <meta property="og:image" content="https://iangabrielsanchez.com/assets/og-image.jpg">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="About — Ian Gabriel Sanchez">
-  <meta name="twitter:description" content="Background, certifications, and stack of Ian Gabriel Sanchez — a backend-focused software engineer specializing in distributed systems, cloud infrastructure, and application security.">
-  <meta name="twitter:image" content="https://iangabrielsanchez.com/assets/og-image.jpg">
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/styles.css">
-</head>
-<body class="bg-white text-black font-sans min-h-screen flex flex-col">
-
-  <div class="max-w-[1400px] w-full mx-auto flex flex-col flex-1 bg-white">
-
-  <!-- ── NAV ── -->
-  <nav class="sticky top-0 z-50 bg-white border-b-3 border-black h-[52px]">
-    <div class="h-full flex items-center justify-between px-10">
-      <a href="/" class="text-[13px] font-black uppercase tracking-[.04em]">Ian Gabriel Sanchez</a>
-      <ul class="hidden md:flex gap-7">
-        <li><a href="/about.html"   class="text-[11px] text-black font-bold uppercase tracking-[.08em] border-b-2 border-accent pb-0.5">About</a></li>
-        <li><a href="/products.html" class="text-[11px] text-gray-500 uppercase tracking-[.08em] hover:text-black transition-colors">Products</a></li>
-        <li><a href="/lab.html"     class="text-[11px] text-gray-500 uppercase tracking-[.08em] hover:text-black transition-colors">Lab</a></li>
-        <li><a href="/blog.html"   class="text-[11px] text-gray-500 uppercase tracking-[.08em] hover:text-black transition-colors">Blog</a></li>
-        <li><a href="/portfolio.html"     class="text-[11px] text-gray-500 uppercase tracking-[.08em] hover:text-black transition-colors">Portfolio</a></li>
-      </ul>
-      <a href="mailto:contact@iangabrielsanchez.com" class="bg-accent text-white text-[11px] font-bold uppercase tracking-[.06em] px-4 py-2 shrink-0 whitespace-nowrap">
-        <span class="hidden sm:inline">Available for Contract →</span>
-        <span class="sm:hidden">Contact →</span>
-      </a>
-    </div>
-  </nav>
-
-  <main class="flex-1">
-
+<Base
+  title={'About — Ian Gabriel Sanchez'}
+  description={'Background, certifications, and stack of Ian Gabriel Sanchez — a backend-focused software engineer specializing in distributed systems, cloud infrastructure, and application security.'}
+  canonical="/about"
+  active="about"
+  ogType="profile"
+>
   <!-- ── PAGE HEADER ── -->
   <div class="border-b-3 border-black bg-white">
     <div class="px-10 pt-14 pb-10">
@@ -265,23 +225,5 @@
     </div>
   </section>
 
-  </main>
-
-  <!-- ── FOOTER ── -->
-  <footer class="bg-black border-t-3 border-black">
-    <div class="px-10 py-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
-      <a href="/" class="text-[13px] font-black text-white uppercase tracking-[.04em]">Ian Gabriel Sanchez</a>
-      <div class="flex gap-6">
-        <a href="https://github.com/iangabrielsanchez" class="text-[11px] text-white/60 uppercase tracking-[.06em] hover:text-white transition-colors">GitHub</a>
-        <a href="https://linkedin.com/in/iangabrielsanchez" class="text-[11px] text-white/60 uppercase tracking-[.06em] hover:text-white transition-colors">LinkedIn</a>
-        <a href="mailto:contact@iangabrielsanchez.com" class="text-[11px] text-white/60 uppercase tracking-[.06em] hover:text-white transition-colors">Email</a>
-      </div>
-      <span class="text-[11px] text-white/40 tracking-[.04em]">© 2026 · Philippines</span>
-    </div>
-  </footer>
-
-  </div>
-
-  <script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "3e1fa82d8d834b08b9a40b8997eb6398"}'></script>
-</body>
-</html>
+  
+</Base>

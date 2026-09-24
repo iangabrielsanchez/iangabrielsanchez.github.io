@@ -1,0 +1,153 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getCollection, render } from 'astro:content';
+import '../../styles/prose.css';
+
+export async function getStaticPaths() {
+  const products = await getCollection('products');
+  const changelogs = await getCollection('productChangelogs');
+
+  return products.map((product) => ({
+    params: { slug: product.id },
+    props: {
+      product,
+      changelog: changelogs.find((c) => c.id === product.id),
+    },
+  }));
+}
+
+const { product, changelog } = Astro.props;
+const p = product.data;
+
+const { Content: Overview } = await render(product);
+const ChangelogContent = changelog ? (await render(changelog)).Content : null;
+---
+
+<Base
+  title={`${p.name} — Ian Gabriel Sanchez`}
+  description={p.description}
+  canonical={`/product/${product.id}`}
+  active="products"
+  ogType="article"
+>
+  <!-- ── META BAR ── -->
+  <div class="border-b-3 border-black bg-white">
+    <div class="px-10 py-4 flex items-center gap-4">
+      <a href="/products.html" class="text-[10px] font-bold uppercase tracking-[.08em] text-gray-400 hover:text-black transition-colors">← Products</a>
+      <span class="text-gray-300">|</span>
+      <span class={`text-[9px] font-bold uppercase tracking-[.12em] ${p.status === 'Live' ? 'text-accent' : 'text-black'}`}>{p.status}</span>
+      <span class="text-[10px] text-gray-400 tracking-[.04em]">{p.category} · {p.year}</span>
+    </div>
+  </div>
+
+  <!-- ── TABS ── -->
+  <div class="border-b-3 border-black">
+    <div class="flex">
+      <button
+        id="tab-overview"
+        class="tab-btn px-8 py-4 text-[11px] font-bold uppercase tracking-[.08em] border-r-3 border-black bg-black text-white"
+      >
+        Overview
+      </button>
+      <button
+        id="tab-changelog"
+        class="tab-btn px-8 py-4 text-[11px] font-bold uppercase tracking-[.08em] border-r-3 border-black text-gray-500 hover:bg-black hover:text-white transition-colors"
+      >
+        Changelog
+      </button>
+    </div>
+  </div>
+
+  <!-- ── CONTENT + SIDEBAR ── -->
+  <div class="border-b-3 border-black">
+    <div class="grid grid-cols-1 md:grid-cols-[1fr_320px]">
+      <!-- Left: article -->
+      <div class="border-r-3 border-black">
+        <div id="panel-overview" class="px-10 py-14">
+          <div class="prose max-w-2xl">
+            <Overview />
+          </div>
+        </div>
+
+        <div id="panel-changelog" class="px-10 py-14 hidden">
+          <div class="prose max-w-2xl">
+            {ChangelogContent ? <ChangelogContent /> : (
+              <>
+                <h1>Changelog</h1>
+                <p>No changelog yet.</p>
+              </>
+            )}
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: meta -->
+      <div class="flex flex-col divide-y-3 divide-black">
+        <div class="px-8 py-8">
+          <p class="text-[9px] font-bold text-accent uppercase tracking-widest2 mb-4">Status</p>
+          <p class={`text-[15px] font-black uppercase ${p.status === 'Live' ? 'text-accent' : 'text-black'}`}>{p.status}</p>
+        </div>
+        <div class="px-8 py-8">
+          <p class="text-[9px] font-bold text-accent uppercase tracking-widest2 mb-4">Category</p>
+          <p class="text-[13px] text-gray-600 font-semibold">{p.category} · {p.year}</p>
+        </div>
+        {p.tags.length > 0 && (
+          <div class="px-8 py-8">
+            <p class="text-[9px] font-bold text-accent uppercase tracking-widest2 mb-4">Tech Stack</p>
+            <div class="flex flex-wrap gap-1.5">
+              {p.tags.map((t) => (
+                <span class="text-[10px] text-gray-600 border border-gray-300 px-2.5 py-1 tracking-[.04em]">{t}</span>
+              ))}
+            </div>
+          </div>
+        )}
+        {p.client && (
+          <div class="px-8 py-8 flex flex-col items-start gap-3">
+            <p class="text-[9px] font-bold text-accent uppercase tracking-widest2">Used By</p>
+            {p.client.url ? (
+              <a href={p.client.url} target="_blank" rel="noopener" class="hover:opacity-70 transition-opacity">
+                <img src={p.client.logo} alt={p.client.name} class="h-12 w-auto [filter:drop-shadow(0_0_0.5px_rgba(0,0,0,0.35))_drop-shadow(0_0_0.5px_rgba(0,0,0,0.35))]" />
+              </a>
+            ) : (
+              <img src={p.client.logo} alt={p.client.name} class="h-12 w-auto [filter:drop-shadow(0_0_0.5px_rgba(0,0,0,0.35))_drop-shadow(0_0_0.5px_rgba(0,0,0,0.35))]" />
+            )}
+          </div>
+        )}
+        <div class="px-8 py-8">
+          <p class="text-[9px] font-bold text-accent uppercase tracking-widest2 mb-4">Interested?</p>
+          <a href="mailto:contact@iangabrielsanchez.com" class="inline-block bg-accent text-white text-[11px] font-bold uppercase tracking-[.06em] px-4 py-2 mt-2">
+            Get in Touch →
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</Base>
+
+<script is:inline>
+  (function () {
+    function showTab(name, push) {
+      ['overview', 'changelog'].forEach(function (t) {
+        document.getElementById('panel-' + t).classList.toggle('hidden', t !== name);
+        var btn = document.getElementById('tab-' + t);
+        if (t === name) {
+          btn.classList.add('bg-black', 'text-white');
+          btn.classList.remove('text-gray-500');
+        } else {
+          btn.classList.remove('bg-black', 'text-white');
+          btn.classList.add('text-gray-500');
+        }
+      });
+      if (push) {
+        var params = new URLSearchParams(location.search);
+        params.set('tab', name);
+        history.replaceState(null, '', location.pathname + '?' + params);
+      }
+    }
+
+    document.getElementById('tab-overview').addEventListener('click', function () { showTab('overview', true); });
+    document.getElementById('tab-changelog').addEventListener('click', function () { showTab('changelog', true); });
+
+    if (new URLSearchParams(location.search).get('tab') === 'changelog') showTab('changelog', false);
+  })();
+</script>
