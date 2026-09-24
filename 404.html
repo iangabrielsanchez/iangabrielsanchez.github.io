@@ -8,14 +8,25 @@
   <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16.png">
   <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
   <title>Page Not Found — Ian Gabriel Sanchez</title>
+  <!-- Hide the 404 UI while a known clean URL is being resolved, so the
+       "not found" content never flashes before the real page swaps in.
+       Unknown paths never get this class, so they paint immediately. -->
+  <style>
+    html.route-pending body { visibility: hidden; }
+  </style>
   <script>
-    // GitHub Pages has no server-side rewrites, so clean URLs like
-    // /product/sim or /about fall through to this 404 page. Before
-    // anything renders, check if the path matches a known route —
-    // if so, fetch the real file and swap the whole document for it
-    // synchronously (via document.write), so the "not found" UI
-    // never paints at all. Only genuinely unknown paths fall through
-    // to the static 404 content below.
+    // GitHub Pages resolves top-level clean URLs (/about -> about.html) on its
+    // own, but nested ones like /product/sim or /post/kafka-vs-redis fall
+    // through to this 404 page. Match the path against the known routes and,
+    // if it resolves, swap the whole document for the real page.
+    //
+    // The swap MUST happen outside the parser's script-execution context:
+    // per spec, document.open() returns without clearing the document when
+    // called while the parser is running a script (script nesting level > 0).
+    // Doing it inline left the 404 markup in place and appended the real page
+    // to it, so every nested route rendered two navs, two footers and a
+    // stray "Oops. You're Lost." at the bottom. Running the swap from the
+    // async XHR callback lets document.open() actually clear the document.
     (function () {
       var path = location.pathname.replace(/\/+$/, '') || '/';
 
@@ -45,21 +56,30 @@
         }
       }
 
-      if (target) {
-        var xhr = new XMLHttpRequest();
-        xhr.open('GET', target, false); // synchronous — blocks parsing until done
-        try {
-          xhr.send(null);
-          if (xhr.status >= 200 && xhr.status < 300) {
-            history.replaceState(null, '', path + location.search);
-            document.open();
-            document.write(xhr.responseText);
-            document.close();
-          }
-        } catch (e) {
-          // fall through to the static 404 content below
-        }
+      if (!target) return; // genuinely unknown - let the 404 content render
+
+      var root = document.documentElement;
+      root.className += ' route-pending';
+
+      function giveUp() {
+        root.className = root.className.replace(/\broute-pending\b/, '');
       }
+
+      var xhr = new XMLHttpRequest();
+      xhr.open('GET', target, true);
+      xhr.onload = function () {
+        if (xhr.status >= 200 && xhr.status < 300) {
+          // Keep the clean URL - product.html/post.html read the slug from it.
+          history.replaceState(null, '', path + location.search);
+          document.open();
+          document.write(xhr.responseText);
+          document.close();
+        } else {
+          giveUp();
+        }
+      };
+      xhr.onerror = giveUp;
+      xhr.send(null);
     })();
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
