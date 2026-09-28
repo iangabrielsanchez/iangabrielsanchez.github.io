@@ -1,5 +1,13 @@
 # SIM — Gym Edition Changelog
 
+## v0.7.0 — Sep 28, 2026
+
+### New
+
+- **Automatic crash reporting**: the app now reports crashes and errors as they happen, so issues can get diagnosed and fixed faster — without needing to remote into a gym's computer to look around. No member data is ever included; only technical error details.
+
+---
+
 ## v0.6.1 — Sep 28, 2026
 
 ### Fixed
