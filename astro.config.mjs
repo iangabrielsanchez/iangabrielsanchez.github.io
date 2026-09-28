@@ -3,7 +3,7 @@ import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
-  site: 'https://iangabrielsanchez.com',
+  site: 'https://www.iangabrielsanchez.com',
 
   // Emit about.html / product/sim.html rather than about/index.html.
   // GitHub Pages resolves extensionless requests to .html at any depth, so
