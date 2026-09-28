@@ -1,17 +1,17 @@
 # SIM — Retail Edition Changelog
 
-## v0.1.0 — Aug 2026
+## v0.1.0 — Jul 20 – Aug 7, 2026
 
 A single fast-moving pre-1.0 release line — SIM Retail went from fork to functioning multi-branch POS in about two and a half weeks. Grouped below by what landed in each phase.
 
-### Polish (Aug 2026)
+### Polish (Aug 7, 2026)
 
 - Masked PIN inputs with a show/hide toggle
 - POS navigation now uses the synced branding logo instead of a bundled asset
 - Moved the set-PIN route so auth tokens attach correctly
 - Fixed a false-positive POS/server version-mismatch warning in server discovery
 
-### Stability
+### Stability (Aug 1, 2026)
 
 - Fixed POS fresh-install crashes, including a native module compile issue affecting receipt printing
 - Correctly stamped build version in the backend
@@ -21,7 +21,7 @@ A single fast-moving pre-1.0 release line — SIM Retail went from fork to funct
 - Log viewer gated to the Admin role instead of a hardcoded username
 - Added a built-in support login for remote troubleshooting
 
-### Feature build-out
+### Feature build-out (Jul 21–31, 2026)
 
 - Dev/master login flow and an offline user cache so the POS can authenticate without a live connection
 - White-label branding: server discovery, branded POS login screen, configurable app identity
@@ -29,7 +29,7 @@ A single fast-moving pre-1.0 release line — SIM Retail went from fork to funct
 - Per-branch sales and stock tracking
 - Rebranded from the SIM gym codebase to SIM Retail
 
-### Hardening
+### Hardening (Jul 21, 2026)
 
 - Fixed an unauthenticated password-reset endpoint that allowed account takeover
 - Fixed unauthenticated file upload/serve endpoints
@@ -38,7 +38,7 @@ A single fast-moving pre-1.0 release line — SIM Retail went from fork to funct
 - Added a ~790-test Jest suite covering 9 modules, plus a CI workflow to run it
 - Fixed a commission-math bug where refunds weren't netted correctly
 
-### Initial build
+### Initial build (Jul 20, 2026)
 
 - Forked from SIM: gym-specific modules (members, NFC check-in, subscriptions, personnel attendance) stripped out
 - New retail modules scaffolded: purchasing, suppliers, customers/loyalty, multi-branch, cashflow
