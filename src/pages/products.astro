@@ -1,8 +1,13 @@
 ---
 import Base from '../layouts/Base.astro';
 import { getCollection } from 'astro:content';
+import { parseChangelogPreview } from '../lib/changelog';
 
 const products = await getCollection('products');
+const changelogs = await getCollection('productChangelogs');
+const changelogById = new Map(
+  changelogs.map((c) => [c.id, parseChangelogPreview(c.body ?? '', 3)]),
+);
 ---
 
 <Base
@@ -23,6 +28,7 @@ const products = await getCollection('products');
   <div class="border-b-3 border-black">
     {products.map((entry) => {
       const p = entry.data;
+      const preview = changelogById.get(entry.id) ?? [];
       return (
         <div class="border-b-3 border-black group hover:bg-black transition-colors">
           <div class="grid grid-cols-1 md:grid-cols-[1fr_280px]">
@@ -57,12 +63,12 @@ const products = await getCollection('products');
               <div>
                 <p class="text-[9px] font-bold text-black group-hover:text-white/50 uppercase tracking-widest2 mb-4">Changelog</p>
                 <div class="space-y-4">
-                  {p.changelog.slice(0, 3).map((c) => (
-                    <div>
+                  {preview.map((c) => (
+                    <a href={`/product/${entry.id}/changelogs/${c.version}`} class="block">
                       <p class="text-[11px] font-bold uppercase tracking-[.04em] group-hover:text-white">{c.version}</p>
                       <p class="text-[11px] text-gray-500 group-hover:text-white/60 mt-0.5">{c.summary}</p>
                       <p class="text-[10px] text-gray-400 group-hover:text-white/40 mt-0.5">{c.date}</p>
-                    </div>
+                    </a>
                   ))}
                 </div>
               </div>

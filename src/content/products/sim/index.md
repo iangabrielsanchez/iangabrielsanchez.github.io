@@ -14,16 +14,6 @@ tags:
   - "Electron"
   - "PostgreSQL"
   - "NFC"
-changelog:
-  - version: "v0.6.0"
-    date: "Sep 2026"
-    summary: "Personnel attendance reporting from card swipes, timezone correctness fix"
-  - version: "v0.5.1"
-    date: "Aug 2026"
-    summary: "Fixed zero-results dashboard bug when date range collapses to a single day"
-  - version: "v0.5.0"
-    date: "Jul 2026"
-    summary: "Financial dashboard: revenue, forecasts, transaction averages"
 ---
 
 # SIM — Gym Edition

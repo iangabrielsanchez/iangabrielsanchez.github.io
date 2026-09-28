@@ -14,10 +14,6 @@ tags:
   - "Electron"
   - "PostgreSQL"
   - "class-validator"
-changelog:
-  - version: "v0.1.0"
-    date: "Aug 2026"
-    summary: "Server discovery, white-label branding, user management, PIN auth, updater fixes"
 ---
 
 # SIM — Retail Edition

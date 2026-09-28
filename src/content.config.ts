@@ -1,12 +1,6 @@
 import { defineCollection, z } from 'astro:content';
 import { glob } from 'astro/loaders';
 
-const changelogEntry = z.object({
-  version: z.string(),
-  date: z.string(),
-  summary: z.string(),
-});
-
 const client = z.object({
   name: z.string(),
   logo: z.string(),
@@ -30,7 +24,6 @@ const products = defineCollection({
     description: z.string(),
     client: client.optional(),
     tags: z.array(z.string()).min(1),
-    changelog: z.array(changelogEntry).min(1),
   }),
 });
 
