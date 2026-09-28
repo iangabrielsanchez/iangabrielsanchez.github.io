@@ -20,7 +20,7 @@ tags:
 
 SIM (Sales and Inventory Management) built for a real gym, running on hardware I set up and maintain. Front desk check-in, subscriptions, retail checkout, staff attendance, and financial reporting — all in one offline-capable desktop app.
 
-![SIM check-in screen with NFC scanner active](https://placehold.co/1200x675/000000/FFFFFF?text=Check-In+Screen)
+![SIM check-in screen with NFC scanner active](/assets/sim-check-in.png)
 
 *Front desk check-in: NFC tap or manual entry, with live reader status.*
 
