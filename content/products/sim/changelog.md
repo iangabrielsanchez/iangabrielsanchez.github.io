@@ -1,6 +1,15 @@
 # SIM — Gym Edition Changelog
 
-## v0.6.0 — Sep 2026
+## v0.6.1 — Sep 28, 2026
+
+### Fixed
+
+- **Day passes and single-session packages no longer disappear into old records**: buying another 1-day gym pass or 1-session class while a prior purchase of the same package was still "active" silently merged the new sale into the old subscription instead of recording a new visit — so staff would see nothing new after taking payment. Every single-visit sale now always creates its own record.
+- Packages can no longer be saved with a Duration of 0 and no Session Count — that combination produced subscriptions that never expired and were treated as permanently active, which is what caused the bug above.
+
+---
+
+## v0.6.0 — Sep 15, 2026
 
 ### New
 
@@ -12,7 +21,7 @@
 
 ---
 
-## v0.5.1 — Aug 2026
+## v0.5.1 — Aug 1, 2026
 
 ### Fixed
 
@@ -20,7 +29,7 @@
 
 ---
 
-## v0.5.0 — Jul 2026
+## v0.5.0 — Jul 15, 2026
 
 ### New
 
@@ -28,7 +37,7 @@
 
 ---
 
-## v0.4.3 — Jun 2026
+## v0.4.3 — Jun 3, 2026
 
 ### Fixed
 
@@ -39,7 +48,7 @@
 
 ---
 
-## v0.4.2 — May 2026
+## v0.4.2 — May 28, 2026
 
 ### Fixed
 
@@ -47,7 +56,7 @@
 
 ---
 
-## v0.4.1 — May 2026
+## v0.4.1 — May 27, 2026
 
 ### New
 
@@ -55,7 +64,7 @@
 
 ---
 
-## v0.4.0 — May 2026
+## v0.4.0 — May 27, 2026
 
 ### Fixed
 
@@ -63,7 +72,7 @@
 
 ---
 
-## v0.3.0 — May 2026
+## v0.3.0 — May 14, 2026
 
 ### New
 
@@ -75,7 +84,7 @@
 
 ---
 
-## v0.2.3 — Apr 2026
+## v0.2.3 — Apr 20, 2026
 
 ### Fixed
 
@@ -85,7 +94,7 @@
 
 ---
 
-## v0.2.2 — Apr 2026
+## v0.2.2 — Apr 20, 2026
 
 ### New
 
@@ -98,7 +107,7 @@
 
 ---
 
-## v0.2.1 — Apr 2026
+## v0.2.1 — Apr 15, 2026
 
 ### New
 
@@ -119,7 +128,7 @@
 
 ---
 
-## v0.2.0 — Mar 2026
+## v0.2.0 — Mar 19, 2026
 
 Initial tagged release, after roughly two weeks of scaffolding.
 
