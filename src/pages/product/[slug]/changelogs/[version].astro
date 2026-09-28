@@ -1,5 +1,7 @@
 ---
 import Base from '../../../../layouts/Base.astro';
+import ProductTabs from '../../../../components/ProductTabs.astro';
+import ProductSidebar from '../../../../components/ProductSidebar.astro';
 import { getCollection } from 'astro:content';
 import { splitChangelogEntries } from '../../../../lib/changelog';
 import { marked } from 'marked';
@@ -34,22 +36,26 @@ const html = marked.parse(entry.body) as string;
   <!-- ── META BAR ── -->
   <div class="border-b-3 border-black bg-white">
     <div class="px-10 py-4 flex items-center gap-4">
-      <a href={`/product/${product.id}?tab=changelog`} class="text-[10px] font-bold uppercase tracking-[.08em] text-gray-400 hover:text-black transition-colors">← {p.name} Changelog</a>
+      <a href={`/product/${product.id}/changelogs`} class="text-[10px] font-bold uppercase tracking-[.08em] text-gray-400 hover:text-black transition-colors">← {p.name} Changelog</a>
     </div>
   </div>
 
-  <!-- ── SINGLE VERSION ── -->
-  <div class="border-b-3 border-black bg-white">
-    <div class="px-10 pt-14 pb-6">
-      <p class="text-[10px] font-bold text-accent uppercase tracking-widest2 mb-3">{p.name}</p>
-      <h1 class="text-[clamp(32px,4.5vw,52px)] font-black uppercase leading-none tracking-[-0.02em] mb-3">{entry.version}</h1>
-      <p class="text-[13px] text-gray-400 font-semibold">{entry.date}</p>
-    </div>
-  </div>
+  <ProductTabs slug={product.id} active="changelog" />
 
+  <!-- ── SINGLE VERSION + SIDEBAR ── -->
   <div class="border-b-3 border-black">
-    <div class="px-10 py-14">
-      <div class="prose max-w-2xl" set:html={html} />
+    <div class="grid grid-cols-1 md:grid-cols-[1fr_320px]">
+      <div class="border-r-3 border-black">
+        <div class="px-10 pt-14 pb-6">
+          <p class="text-[10px] font-bold text-accent uppercase tracking-widest2 mb-3">{p.name}</p>
+          <h1 class="text-[clamp(32px,4.5vw,52px)] font-black uppercase leading-none tracking-[-0.02em] mb-3">{entry.version}</h1>
+          <p class="text-[13px] text-gray-400 font-semibold">{entry.date}</p>
+        </div>
+        <div class="px-10 pb-14">
+          <div class="prose max-w-2xl" set:html={html} />
+        </div>
+      </div>
+      <ProductSidebar product={product} />
     </div>
   </div>
 </Base>

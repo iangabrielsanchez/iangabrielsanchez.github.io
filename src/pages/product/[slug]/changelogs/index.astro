@@ -1,0 +1,70 @@
+---
+import Base from '../../../../layouts/Base.astro';
+import ProductTabs from '../../../../components/ProductTabs.astro';
+import ProductSidebar from '../../../../components/ProductSidebar.astro';
+import { getCollection } from 'astro:content';
+import { splitChangelogEntries } from '../../../../lib/changelog';
+import { marked } from 'marked';
+import '../../../../styles/prose.css';
+
+export async function getStaticPaths() {
+  const products = await getCollection('products');
+  const changelogs = await getCollection('productChangelogs');
+
+  return products.map((product) => ({
+    params: { slug: product.id },
+    props: {
+      product,
+      entries: splitChangelogEntries(
+        changelogs.find((c) => c.id === product.id)?.body ?? '',
+      ),
+    },
+  }));
+}
+
+const { product, entries } = Astro.props;
+const p = product.data;
+---
+
+<Base
+  title={`${p.name} Changelog — Ian Gabriel Sanchez`}
+  description={`Every released version of ${p.name}.`}
+  canonical={`/product/${product.id}/changelogs`}
+  active="products"
+  ogType="article"
+>
+  <!-- ── META BAR ── -->
+  <div class="border-b-3 border-black bg-white">
+    <div class="px-10 py-4 flex items-center gap-4">
+      <a href="/products.html" class="text-[10px] font-bold uppercase tracking-[.08em] text-gray-400 hover:text-black transition-colors">← Products</a>
+      <span class="text-gray-300">|</span>
+      <span class={`text-[9px] font-bold uppercase tracking-[.12em] ${p.status === 'Live' ? 'text-accent' : 'text-black'}`}>{p.status}</span>
+      <span class="text-[10px] text-gray-400 tracking-[.04em]">{p.category} · {p.year}</span>
+    </div>
+  </div>
+
+  <ProductTabs slug={product.id} active="changelog" />
+
+  <!-- ── CONTENT + SIDEBAR ── -->
+  <div class="border-b-3 border-black">
+    <div class="grid grid-cols-1 md:grid-cols-[1fr_320px]">
+      <div class="border-r-3 border-black px-10 py-14">
+        <div class="prose max-w-2xl">
+          <h1>{p.name} Changelog</h1>
+          {entries.length === 0 && <p>No changelog yet.</p>}
+          {entries.map((entry, i) => (
+            <>
+              <h2>
+                <a href={`/product/${product.id}/changelogs/${entry.version}`}>{entry.version}</a>
+                {' — '}{entry.date}
+              </h2>
+              <Fragment set:html={marked.parse(entry.body)} />
+              {i < entries.length - 1 && <hr />}
+            </>
+          ))}
+        </div>
+      </div>
+      <ProductSidebar product={product} />
+    </div>
+  </div>
+</Base>

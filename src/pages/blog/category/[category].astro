@@ -1,0 +1,39 @@
+---
+import Base from '../../../layouts/Base.astro';
+import BlogList from '../../../components/BlogList.astro';
+import { getCollection } from 'astro:content';
+import { categorySlug } from '../../../lib/blog';
+
+export async function getStaticPaths() {
+  const posts = (await getCollection('posts')).filter((p) => !p.data.draft);
+  const categories = [...new Set(posts.map((p) => p.data.category))];
+
+  return categories.map((category) => ({
+    params: { category: categorySlug(category) },
+    props: {
+      category,
+      posts: posts.filter((p) => p.data.category === category),
+      categories: categories.sort(),
+    },
+  }));
+}
+
+const { category, posts, categories } = Astro.props;
+---
+
+<Base
+  title={`${category} — Blog — Ian Gabriel Sanchez`}
+  description={`Writing on ${category.toLowerCase()} by Ian Gabriel Sanchez.`}
+  canonical={`/blog/category/${categorySlug(category)}`}
+  active="blog"
+>
+  <!-- ── PAGE HEADER ── -->
+  <div class="border-b-3 border-black bg-white">
+    <div class="px-10 pt-14 pb-10">
+      <p class="text-[10px] font-bold text-accent uppercase tracking-widest2 mb-3">Writing</p>
+      <h1 class="text-[clamp(48px,6vw,72px)] font-black uppercase leading-none tracking-[-0.03em]">Blog</h1>
+    </div>
+  </div>
+
+  <BlogList posts={posts} categories={categories} categorySlug={categorySlug} active={category} />
+</Base>

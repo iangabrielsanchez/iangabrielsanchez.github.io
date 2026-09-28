@@ -1,0 +1,53 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  posts: CollectionEntry<'posts'>[];
+  categories: string[];
+  categorySlug: (category: string) => string;
+  active: string | null;
+}
+
+const { posts, categories, categorySlug, active } = Astro.props;
+
+function badgeClass(cat: string) {
+  if (cat === 'Security') return 'inline-block text-[9px] font-bold uppercase tracking-[.12em] bg-accent text-white px-2.5 py-1';
+  if (cat === 'Backend') return 'inline-block text-[9px] font-bold uppercase tracking-[.12em] bg-black group-hover:bg-white text-white group-hover:text-black px-2.5 py-1';
+  return 'inline-block text-[9px] font-bold uppercase tracking-[.12em] border border-gray-400 group-hover:border-white/40 text-gray-500 group-hover:text-white/70 px-2.5 py-1';
+}
+
+const pillBase = 'text-[10px] font-bold uppercase tracking-[.08em] px-3 py-1.5 border transition-colors';
+const pillOn = `${pillBase} bg-black text-white border-black`;
+const pillOff = `${pillBase} bg-white text-gray-600 border-gray-300 hover:border-black hover:text-black`;
+---
+
+<!-- ── FILTER BAR ── -->
+<div class="border-b-3 border-black bg-white">
+  <div class="px-10 py-5 flex flex-wrap items-center gap-2">
+    <a href="/blog" class={active === null ? pillOn : pillOff}>All</a>
+    <span class="w-px h-4 bg-gray-300 mx-1"></span>
+    {categories.map((c) => (
+      <a href={`/blog/category/${categorySlug(c)}`} class={active === c ? pillOn : pillOff}>{c}</a>
+    ))}
+  </div>
+</div>
+
+<!-- ── NOTE LIST ── -->
+<div class="border-b-3 border-black">
+  {posts.map((entry) => (
+    <a
+      href={`/post/${entry.id}`}
+      class="flex flex-col md:flex-row md:items-start gap-4 md:gap-10 px-10 py-8 border-b-3 last:border-b-0 border-black hover:bg-black hover:text-white transition-colors group"
+    >
+      <div class="flex-shrink-0 w-28">
+        <span class={badgeClass(entry.data.category)}>{entry.data.category}</span>
+        <p class="text-[10px] text-gray-400 group-hover:text-white/50 mt-3 tracking-[.04em]">{entry.data.date}</p>
+      </div>
+      <div class="flex-1">
+        <h2 class="text-[18px] font-black uppercase tracking-[.01em] leading-snug mb-2">{entry.data.title}</h2>
+        <p class="text-[13px] text-gray-500 group-hover:text-white/70 leading-relaxed">{entry.data.description}</p>
+      </div>
+      <span class="hidden md:block text-[18px] font-black group-hover:translate-x-1 transition-transform mt-1">→</span>
+    </a>
+  ))}
+</div>

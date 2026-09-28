@@ -1,0 +1,22 @@
+---
+interface Props {
+  slug: string;
+  active: 'overview' | 'changelog';
+}
+
+const { slug, active } = Astro.props;
+
+const tabClass = (name: 'overview' | 'changelog') =>
+  `px-8 py-4 text-[11px] font-bold uppercase tracking-[.08em] border-r-3 border-black transition-colors ${
+    active === name
+      ? 'bg-black text-white'
+      : 'text-gray-500 hover:bg-black hover:text-white'
+  }`;
+---
+
+<div class="border-b-3 border-black">
+  <div class="flex">
+    <a href={`/product/${slug}`} class={tabClass('overview')}>Overview</a>
+    <a href={`/product/${slug}/changelogs`} class={tabClass('changelog')}>Changelog</a>
+  </div>
+</div>
