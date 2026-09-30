@@ -7,7 +7,7 @@ tags: ["TypeScript", "Angular", "NestJS", "Java", "BPMN", "AWS"]
 draft: false
 ---
 
-*Baton is no longer operating. These screenshots are shared with the owner's permission, and personal and client information has been blurred.*
+*Baton is no longer operating ([archived site](https://web.archive.org/web/20220727192704/https://www.heybaton.com/)). These screenshots are shared with the owner's permission, and I have blurred any personal or client information.*
 
 Baton's app is a place where business flows can be automated with a BPMN-based, no-code workflow designer. The state of each workflow is driven by forms and external events.
 

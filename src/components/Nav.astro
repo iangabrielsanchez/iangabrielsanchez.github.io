@@ -18,19 +18,56 @@ const off = `${base} text-gray-500 hover:text-black transition-colors`;
 ---
 
 <nav class="sticky top-0 z-50 bg-white border-b-3 border-black h-[52px]">
-  <div class="h-full flex items-center justify-between px-10">
-    <a href="/" class="text-[13px] font-black uppercase tracking-[.04em]">Ian Gabriel Sanchez</a>
+  <div class="h-full flex items-center justify-between gap-3 px-4 md:px-10">
+    <a href="/" class="text-[13px] font-black uppercase tracking-[.04em] shrink-0">Ian Gabriel Sanchez</a>
     <ul class="hidden md:flex gap-7">
       {links.map((l) => (
         <li><a href={l.href} class={active === l.key ? on : off}>{l.label}</a></li>
       ))}
     </ul>
-    <a
-      href="mailto:contact@iangabrielsanchez.com"
-      class="bg-accent text-white text-[11px] font-bold uppercase tracking-[.06em] px-4 py-2 shrink-0 whitespace-nowrap"
-    >
-      <span class="hidden sm:inline">Available for Contract →</span>
-      <span class="sm:hidden">Contact →</span>
-    </a>
+    <div class="flex items-center gap-2">
+      <a
+        href="mailto:contact@iangabrielsanchez.com"
+        class="bg-accent text-white text-[11px] font-bold uppercase tracking-[.06em] px-4 py-2 shrink-0 whitespace-nowrap"
+      >
+        <span class="hidden sm:inline">Available for Contract →</span>
+        <span class="sm:hidden">Contact →</span>
+      </a>
+      <button
+        type="button"
+        id="nav-toggle"
+        aria-expanded="false"
+        aria-controls="mobile-nav"
+        class="md:hidden border-3 border-black text-[11px] font-bold uppercase tracking-[.06em] px-3 py-[5px] hover:bg-black hover:text-white transition-colors"
+      >Menu</button>
+    </div>
   </div>
+
+  <ul id="mobile-nav" hidden class="md:hidden absolute left-0 right-0 top-full bg-white border-b-3 border-black">
+    {links.map((l) => (
+      <li class="border-t border-gray-200 first:border-t-0">
+        <a
+          href={l.href}
+          class={`block px-4 py-3 text-[12px] uppercase tracking-[.08em] ${active === l.key ? 'font-bold text-black border-l-4 border-accent' : 'text-gray-600 hover:bg-black hover:text-white transition-colors'}`}
+        >{l.label}</a>
+      </li>
+    ))}
+  </ul>
 </nav>
+
+<script is:inline>
+  (function () {
+    var btn = document.getElementById('nav-toggle');
+    var menu = document.getElementById('mobile-nav');
+    if (!btn || !menu) return;
+    function setOpen(open) {
+      menu.hidden = !open;
+      btn.setAttribute('aria-expanded', String(open));
+      btn.textContent = open ? 'Close' : 'Menu';
+    }
+    btn.addEventListener('click', function () { setOpen(menu.hidden); });
+    menu.addEventListener('click', function (e) { if (e.target.tagName === 'A') setOpen(false); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setOpen(false); });
+    window.matchMedia('(min-width: 768px)').addEventListener('change', function (e) { if (e.matches) setOpen(false); });
+  })();
+</script>
