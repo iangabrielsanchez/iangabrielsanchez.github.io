@@ -1,0 +1,53 @@
+<dialog id="lightbox" class="m-auto max-w-[95vw] max-h-[95vh] p-0 overflow-hidden border-3 border-black bg-white backdrop:bg-black/80">
+  <div class="relative">
+    <img id="lightbox-img" alt="" class="block max-w-[95vw] max-h-[84vh] w-auto h-auto" />
+    <button type="button" id="lightbox-close" aria-label="Close" class="absolute top-0 right-0 text-white/80 [text-shadow:0_0_3px_#000,0_0_6px_#000] text-[11px] uppercase tracking-[.06em] font-black px-3 py-2 bg-transparent hover:bg-black hover:text-white hover:[text-shadow:none] focus-visible:bg-black focus-visible:text-white transition-colors">Close ✕</button>
+    <button type="button" id="lightbox-prev" aria-label="Previous image" class="absolute left-0 top-1/2 -translate-y-1/2 text-white/80 [text-shadow:0_0_3px_#000,0_0_6px_#000] text-[18px] font-black px-3 py-4 bg-transparent hover:bg-black hover:text-white hover:[text-shadow:none] focus-visible:bg-black focus-visible:text-white transition-colors">←</button>
+    <button type="button" id="lightbox-next" aria-label="Next image" class="absolute right-0 top-1/2 -translate-y-1/2 text-white/80 [text-shadow:0_0_3px_#000,0_0_6px_#000] text-[18px] font-black px-3 py-4 bg-transparent hover:bg-black hover:text-white hover:[text-shadow:none] focus-visible:bg-black focus-visible:text-white transition-colors">→</button>
+  </div>
+  <div class="flex items-center justify-between gap-4 bg-black text-white text-[11px] font-bold uppercase tracking-[.06em] px-4 py-2">
+    <span id="lightbox-caption" class="truncate"></span>
+    <span id="lightbox-count" class="shrink-0 tabular-nums"></span>
+  </div>
+</dialog>
+
+<script is:inline>
+  (function () {
+    var dlg = document.getElementById('lightbox');
+    var big = document.getElementById('lightbox-img');
+    var caption = document.getElementById('lightbox-caption');
+    var count = document.getElementById('lightbox-count');
+    var prev = document.getElementById('lightbox-prev');
+    var next = document.getElementById('lightbox-next');
+    var imgs = Array.prototype.slice.call(document.querySelectorAll('.prose img'));
+    var index = 0;
+
+    function show(i) {
+      index = (i + imgs.length) % imgs.length;
+      var img = imgs[index];
+      big.src = img.currentSrc || img.src;
+      big.alt = img.alt;
+      caption.textContent = img.alt;
+      count.textContent = index + 1 + ' / ' + imgs.length;
+    }
+
+    imgs.forEach(function (img, i) {
+      img.style.cursor = 'zoom-in';
+      img.addEventListener('click', function () {
+        show(i);
+        prev.hidden = next.hidden = count.hidden = imgs.length < 2;
+        dlg.showModal();
+      });
+    });
+
+    prev.addEventListener('click', function () { show(index - 1); });
+    next.addEventListener('click', function () { show(index + 1); });
+    document.getElementById('lightbox-close').addEventListener('click', function () { dlg.close(); });
+    dlg.addEventListener('click', function (e) { if (e.target === dlg) dlg.close(); });
+    document.addEventListener('keydown', function (e) {
+      if (!dlg.open || imgs.length < 2) return;
+      if (e.key === 'ArrowLeft') { e.preventDefault(); show(index - 1); }
+      if (e.key === 'ArrowRight') { e.preventDefault(); show(index + 1); }
+    });
+  })();
+</script>

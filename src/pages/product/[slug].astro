@@ -1,4 +1,5 @@
 ---
+import Lightbox from '../../components/Lightbox.astro';
 import Base from '../../layouts/Base.astro';
 import ProductTabs from '../../components/ProductTabs.astro';
 import ProductSidebar from '../../components/ProductSidebar.astro';
@@ -50,23 +51,4 @@ const { Content: Overview } = await render(product);
   </div>
 </Base>
 
-<dialog id="lightbox" class="m-auto max-w-[95vw] max-h-[95vh] p-0 border-3 border-black bg-white backdrop:bg-black/80">
-  <img id="lightbox-img" alt="" class="block max-w-[95vw] max-h-[90vh] w-auto h-auto" />
-  <button type="button" id="lightbox-close" class="absolute top-0 right-0 bg-black text-white text-[11px] font-bold uppercase tracking-[.06em] px-3 py-2">Close ✕</button>
-</dialog>
-
-<script is:inline>
-  (function () {
-    var dlg = document.getElementById('lightbox');
-    var big = document.getElementById('lightbox-img');
-    document.querySelectorAll('.prose img').forEach(function (img) {
-      img.style.cursor = 'zoom-in';
-      img.addEventListener('click', function () {
-        big.src = img.currentSrc || img.src;
-        big.alt = img.alt;
-        dlg.showModal();
-      });
-    });
-    dlg.addEventListener('click', function () { dlg.close(); });
-  })();
-</script>
+<Lightbox />

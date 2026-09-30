@@ -131,36 +131,48 @@ import Base from '../layouts/Base.astro';
 
       <div class="border-r-3 border-b-3 border-black p-8">
         <h3 class="text-[14px] font-black uppercase tracking-[.02em] mb-3">Backend &amp; Platform</h3>
-        <ul class="space-y-2.5">
-          <li class="text-[13px] text-gray-600 leading-relaxed">Designed and shipped event-driven microservices handling 50k+ transactions/day, including zero-downtime dual-write migrations off legacy monoliths</li>
+        <ul class="space-y-2.5 list-disc pl-4 marker:text-accent">
+          <li class="text-[13px] text-gray-600 leading-relaxed">Moved invoicing and billing to Stripe, including migration tooling to transfer customer subscriptions from Maxio (Chargify) and Paywhirl</li>
           <li class="text-[13px] text-gray-600 leading-relaxed">Migrated backend infrastructure to Infrastructure-as-Code (AWS CDK), cutting deployment time by 70% and enabling reproducible environments</li>
           <li class="text-[13px] text-gray-600 leading-relaxed">Built automated data replication and synchronization pipelines across relational and NoSQL stores for reporting and analytics</li>
           <li class="text-[13px] text-gray-600 leading-relaxed">Engineered integration layers and orchestration logic powering AI agent workflows across third-party APIs</li>
+          <li class="text-[13px] text-gray-600 leading-relaxed">Integrated an ERP system into subscription and billing flows, and added an invoice payment flow through a third-party payments provider</li>
+          <li class="text-[13px] text-gray-600 leading-relaxed">Planned and executed managed Postgres tier upgrades across staging, production, and read replicas</li>
+          <li class="text-[13px] text-gray-600 leading-relaxed">Moved CI from CircleCI to GitHub Actions, and isolated end-to-end test data so the suite could run fully in parallel</li>
+          <li class="text-[13px] text-gray-600 leading-relaxed">Re-architected a web app and API to be stateless, and replaced deprecated identity-provider API endpoints ahead of their end of life</li>
         </ul>
       </div>
 
       <div class="border-b-3 border-black p-8">
         <h3 class="text-[14px] font-black uppercase tracking-[.02em] mb-3">Leadership &amp; Delivery</h3>
-        <ul class="space-y-2.5">
-          <li class="text-[13px] text-gray-600 leading-relaxed">Led an engineering team of 6, owning technical roadmap, architecture decisions, hiring, and budget</li>
+        <ul class="space-y-2.5 list-disc pl-4 marker:text-accent">
+          <li class="text-[13px] text-gray-600 leading-relaxed">Led an engineering team of 6 as Head of Engineering, owning delivery from business requirements through to production</li>
+          <li class="text-[13px] text-gray-600 leading-relaxed">Turned business requirements into technical designs, choosing the stack and documenting pros, cons, and trade-offs for each major decision</li>
+          <li class="text-[13px] text-gray-600 leading-relaxed">Owned the engineering budget and team lifecycle end to end: hiring, mentoring, performance reviews, and offboarding</li>
+          <li class="text-[13px] text-gray-600 leading-relaxed">Planned, prioritized, and assigned the team's work, and ran the release path from staging to production, including the infrastructure, databases, and CI/CD behind it</li>
           <li class="text-[13px] text-gray-600 leading-relaxed">Directed triage and resolution for critical production incidents, deploying hotfixes under pressure to minimize customer impact</li>
           <li class="text-[13px] text-gray-600 leading-relaxed">Introduced CI/CD and structured development workflows, reducing release failures and increasing deployment frequency</li>
           <li class="text-[13px] text-gray-600 leading-relaxed">Evaluated technical CVs and project submissions for engineering hires, focusing on real-world project relevance over pedigree</li>
+          <li class="text-[13px] text-gray-600 leading-relaxed">Ran technical spikes to size new integrations and payment approaches before committing delivery time, including an auto-rollback mechanism</li>
         </ul>
       </div>
 
       <div class="border-r-3 border-black p-8">
         <h3 class="text-[14px] font-black uppercase tracking-[.02em] mb-3">Security &amp; Compliance</h3>
-        <ul class="space-y-2.5">
-          <li class="text-[13px] text-gray-600 leading-relaxed">Drove SOC 2 compliance efforts end-to-end, resolving both reported and self-identified vulnerabilities</li>
-          <li class="text-[13px] text-gray-600 leading-relaxed">Built automated evidence-collection pipelines that cut audit prep from three weeks to two days</li>
-          <li class="text-[13px] text-gray-600 leading-relaxed">Implemented rate limiting, abuse detection, and least-privilege access patterns across production services</li>
+        <ul class="space-y-2.5 list-disc pl-4 marker:text-accent">
+          <li class="text-[13px] text-gray-600 leading-relaxed">Drove SOC 2 compliance efforts, resolving both reported and undetected vulnerabilities</li>
+          <li class="text-[13px] text-gray-600 leading-relaxed">Implemented rate limiting and domain banning for commonly abused features</li>
+          <li class="text-[13px] text-gray-600 leading-relaxed">Built role-scoped, self-service investigator access so outside users only see their assigned work</li>
+          <li class="text-[13px] text-gray-600 leading-relaxed">Overhauled a company's authorization system, restructuring how users, roles, and per-location access are granted and enforced across the platform</li>
+          <li class="text-[13px] text-gray-600 leading-relaxed">Resolved findings from an external web application penetration test, and fixed access-control edge cases around guest and role-less accounts</li>
+          <li class="text-[13px] text-gray-600 leading-relaxed">Reviewed features before release for data exposure, flagging unauthenticated access paths to sensitive evidence data before they shipped</li>
+          <li class="text-[13px] text-gray-600 leading-relaxed">Fixed identity-linking so each user maps to the correct authenticated identity-provider account</li>
         </ul>
       </div>
 
       <div class="p-8">
         <h3 class="text-[14px] font-black uppercase tracking-[.02em] mb-3">Systems &amp; Tooling</h3>
-        <ul class="space-y-2.5">
+        <ul class="space-y-2.5 list-disc pl-4 marker:text-accent">
           <li class="text-[13px] text-gray-600 leading-relaxed">Designed database schemas and REST/RPC APIs for healthcare, billing, and SaaS platforms from the ground up</li>
           <li class="text-[13px] text-gray-600 leading-relaxed">Built internal tooling to automate recurring operations, reducing manual effort and improving response times</li>
           <li class="text-[13px] text-gray-600 leading-relaxed">Integrated event-driven microservices with Apache Kafka for reliable, ordered data transport</li>
