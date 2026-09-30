@@ -103,12 +103,12 @@ const jsonLd = {
 
     <div id="blog-grid" class="grid grid-cols-1 md:grid-cols-3 border-t-3 border-black mt-10">
       {featuredPosts.map((entry, i) => (
-        <div class={`${cardBorder3(i, featuredPosts.length)} p-8`}>
-          <span class="inline-block text-[9px] font-bold uppercase tracking-[.12em] bg-black text-white px-2.5 py-1 mb-4">{entry.data.category}</span>
-          <h4 class="text-[15px] font-black uppercase tracking-[.01em] leading-snug mb-2">{entry.data.title}</h4>
-          <p class="text-[12px] text-gray-500 leading-relaxed">{entry.data.description}</p>
-          <p class="text-[10px] text-gray-400 mt-4 tracking-[.04em]">{entry.data.date}</p>
-        </div>
+        <a href={`/post/${entry.id}`} class={`${cardBorder3(i, featuredPosts.length)} p-8 hover:bg-black transition-colors group`}>
+          <span class="inline-block text-[9px] font-bold uppercase tracking-[.12em] bg-black group-hover:bg-white text-white group-hover:text-black px-2.5 py-1 mb-4">{entry.data.category}</span>
+          <h3 class="text-[15px] font-black uppercase tracking-[.01em] leading-snug mb-2 group-hover:text-white">{entry.data.title}</h3>
+          <p class="text-[12px] text-gray-500 group-hover:text-white/70 leading-relaxed">{entry.data.description}</p>
+          <p class="text-[10px] text-gray-400 group-hover:text-white/50 mt-4 tracking-[.04em]">{entry.data.date}</p>
+        </a>
       ))}
     </div>
     </div>
