@@ -28,7 +28,7 @@ const p = product.data;
 
 <Base
   title={`${p.name} Changelog — Ian Gabriel Sanchez`}
-  description={`Every released version of ${p.name}.`}
+  description={`Full release history of ${p.name} by Ian Gabriel Sanchez — every version, what changed, and when it shipped.`}
   canonical={`/product/${product.id}/changelogs`}
   active="products"
   ogType="article"
@@ -36,7 +36,7 @@ const p = product.data;
   <!-- ── META BAR ── -->
   <div class="border-b-3 border-black bg-white">
     <div class="px-10 py-4 flex items-center gap-4">
-      <a href="/products.html" class="text-[10px] font-bold uppercase tracking-[.08em] text-gray-400 hover:text-black transition-colors">← Products</a>
+      <a href="/products" class="text-[10px] font-bold uppercase tracking-[.08em] text-gray-400 hover:text-black transition-colors">← Products</a>
       <span class="text-gray-300">|</span>
       <span class={`text-[9px] font-bold uppercase tracking-[.12em] ${p.status === 'Live' ? 'text-accent' : 'text-black'}`}>{p.status}</span>
       <span class="text-[10px] text-gray-400 tracking-[.04em]">{p.category} · {p.year}</span>

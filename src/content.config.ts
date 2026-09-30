@@ -22,6 +22,7 @@ const products = defineCollection({
     category: z.string(),
     year: z.string(),
     description: z.string(),
+    seoDescription: z.string().max(160).optional(),
     client: client.optional(),
     tags: z.array(z.string()).min(1),
   }),

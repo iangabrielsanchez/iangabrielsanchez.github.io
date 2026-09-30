@@ -22,7 +22,7 @@ const {
   noindex = false,
 } = Astro.props;
 
-const site = Astro.site ?? new URL('https://iangabrielsanchez.com');
+const site = Astro.site ?? new URL('https://www.iangabrielsanchez.com');
 const pageUrl = new URL(canonical, site).href;
 const ogImage = new URL('/assets/og-image.jpg', site).href;
 ---

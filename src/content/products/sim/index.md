@@ -3,6 +3,7 @@ name: "SIM — Gym Edition"
 status: "Live"
 category: "Point of Sale"
 year: "2026"
+seoDescription: "SIM: an offline-first desktop POS and membership platform for gyms, with NFC check-in, subscriptions, staff attendance, and reporting."
 description: "SIM (Sales and Inventory Management) built for gyms — a desktop point-of-sale and membership platform with NFC check-in, subscriptions and packages, staff attendance, retail/cafe checkout, and financial reporting, all running offline on hardware I control."
 client:
   name: "AC Fitness"
@@ -20,7 +21,7 @@ tags:
 
 SIM (Sales and Inventory Management) built for a real gym, running on hardware I set up and maintain. Front desk check-in, subscriptions, retail checkout, staff attendance, and financial reporting — all in one offline-capable desktop app.
 
-![SIM check-in screen with NFC scanner active](/assets/sim-check-in.png)
+![SIM check-in screen with NFC scanner active](/assets/sim-check-in.jpg)
 
 *Front desk check-in: NFC tap or manual entry, with live reader status.*
 

@@ -3,6 +3,7 @@ name: "SIM — Retail Edition"
 status: "Beta"
 category: "Point of Sale"
 year: "2026"
+seoDescription: "SIM Retail: a white-labeled, multi-branch POS with purchasing, suppliers, loyalty, and offline-first checkout, forked from the gym edition."
 description: "SIM (Sales and Inventory Management), generalized for retail — a white-labeled, multi-branch POS forked from the gym edition in under three weeks, with purchasing, suppliers, loyalty, commissions, and offline-first checkout, hardened with a ~790-test backend suite."
 client:
   name: "LCS"

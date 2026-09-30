@@ -24,11 +24,12 @@ export async function getStaticPaths() {
 const { product, entry } = Astro.props;
 const p = product.data;
 const html = marked.parse(entry.body) as string;
+const metaDescription = `Release notes for ${p.name} ${entry.version}, shipped ${entry.date}. See what changed in this version of the ${p.category} product by Ian Gabriel Sanchez.`.slice(0, 158);
 ---
 
 <Base
   title={`${p.name} ${entry.version} — Ian Gabriel Sanchez`}
-  description={`${p.name} ${entry.version} (${entry.date})`}
+  description={metaDescription}
   canonical={`/product/${product.id}/changelogs/${entry.version}`}
   active="products"
   ogType="article"
